@@ -23,19 +23,19 @@ import { faqJsonLd, googleBusinessProfileUrl, pageMetadata } from "./seo";
  */
 export const cnPageSeo: Record<string, { title: string; description: string; path: string; keywords: string[]; image?: string }> = {
   packages: {
-    title: "吉隆坡SPA价目 | 普通入场与按摩价格 · 吉隆坡会所",
+    title: "吉隆坡水汇价目 | 普通入场与按摩价格 · 吉隆坡会所",
     description:
-      "吉隆坡会所SPA价目：普通 12 小时入场、儿童票、按摩护理、搓背去角质与包厢价格，线上即可预约。",
+      "吉隆坡会所水汇价目：普通 12 小时入场、儿童票、按摩护理、搓背去角质与包厢价格，适合搜索吉隆坡下水、吉隆坡水汇、下水、水汇的客人查看。",
     path: "/packages/",
-    keywords: ["吉隆坡SPA价格", "吉隆坡按摩价格", "吉隆坡水疗价目", "吉隆坡会所价目", "吉隆坡温泉价格"],
+    keywords: ["吉隆坡SPA价格", "吉隆坡按摩价格", "吉隆坡水疗价目", "吉隆坡水汇价目", "吉隆坡会所价目", "吉隆坡温泉价格", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
     image: "/assets/hero-packages-rain.jpg",
   },
   facilities: {
-    title: "吉隆坡SPA设施 | 汤泉汗蒸桑拿包厢 · 吉隆坡会所",
+    title: "吉隆坡水汇设施 | 汤泉汗蒸桑拿包厢 · 吉隆坡会所",
     description:
-      "吉隆坡会所位于吉隆坡 Viva Home Mall：冷热汤池、岩盐蒸房房、桑拿、按摩包厢、搓背房、休息大厅与餐饮区，24 小时开放。",
+      "吉隆坡会所位于吉隆坡 Viva Home Mall：冷热汤池、岩盐蒸房房、桑拿、按摩包厢、搓背房、休息大厅与餐饮区，24 小时开放，适合吉隆坡下水与吉隆坡水汇搜索。",
     path: "/facilities/",
-    keywords: ["吉隆坡SPA设施", "吉隆坡汗蒸", "吉隆坡桑拿", "吉隆坡娱乐", "吉隆坡会所设施"],
+    keywords: ["吉隆坡SPA设施", "吉隆坡汗蒸", "吉隆坡桑拿", "吉隆坡娱乐", "吉隆坡会所设施", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
     image: "/assets/fac-hero-immersive.jpg",
   },
   "home-massage": {
@@ -77,11 +77,11 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
     keywords: ["吉隆坡会所地址", "吉隆坡SPA地址", "吉隆坡按摩电话", "Viva Home Mall spa"],
   },
   wenquan: {
-    title: "吉隆坡温泉汤泉 | 24小时中式泡汤 · 吉隆坡会所",
+    title: "吉隆坡水汇汤泉 | 24小时中式泡汤 · 吉隆坡会所",
     description:
-      "吉隆坡会所 24 小时温泉汤泉：热汤池、汗蒸、桑拿与冰池交替，12 小时任泡任休息，位于 Viva Home Mall。",
+      "吉隆坡会所 24 小时温泉汤泉：热汤池、汗蒸、桑拿与冰池交替，12 小时任泡任休息，位于 Viva Home Mall，也覆盖吉隆坡下水、吉隆坡水汇、下水、水汇搜索。",
     path: "/wenquan/",
-    keywords: ["吉隆坡温泉", "吉隆坡汤泉", "吉隆坡泡汤", "KL onsen spa", "24小时汤泉"],
+    keywords: ["吉隆坡温泉", "吉隆坡汤泉", "吉隆坡泡汤", "KL onsen spa", "24小时汤泉", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
   },
   "terms-conditions": {
     title: "条款与细则 | 吉隆坡会所 吉隆坡SPA",
@@ -98,11 +98,11 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
 };
 
 const cnFallbackSeo = {
-  title: "吉隆坡会所 | 吉隆坡SPA按摩娱乐",
+  title: "吉隆坡会所 | 吉隆坡下水水汇按摩娱乐",
   description:
-    "吉隆坡会所中文页面：吉隆坡SPA、吉隆坡按摩、吉隆坡娱乐、24 小时汤泉、价目、设施、美容、中医与联系资料。",
+    "吉隆坡会所中文页面：吉隆坡SPA、吉隆坡下水、吉隆坡水汇、下水、水汇、吉隆坡按摩、吉隆坡娱乐、24 小时汤泉、价目、设施、美容、中医与联系资料。",
   path: "/",
-  keywords: ["吉隆坡SPA", "吉隆坡按摩", "吉隆坡娱乐", "吉隆坡会所", "klspa", "klmassage", "klentertainment"],
+  keywords: ["吉隆坡SPA", "吉隆坡按摩", "吉隆坡娱乐", "吉隆坡会所", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇", "klspa", "klmassage", "klentertainment"],
 };
 
 const cnBase = "";

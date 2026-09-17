@@ -5,6 +5,7 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://klhuisuo.kl
 export const seoKeywords = [
   "吉隆坡会所",
   "吉隆坡会所 吉隆坡下水",
+  "吉隆坡会所 吉隆坡水汇",
   "吉隆坡会所 吉隆坡按摩",
   "吉隆坡会所 吉隆坡娱乐",
   "klhuisuo",
@@ -12,6 +13,9 @@ export const seoKeywords = [
   "吉隆坡会所",
   "吉隆坡按摩",
   "吉隆坡下水",
+  "吉隆坡水汇",
+  "下水",
+  "水汇",
   "吉隆坡莞式按摩服务",
   "莞式按摩吉隆坡",
   "吉隆坡娱乐",
@@ -114,6 +118,7 @@ export const localBusinessJsonLd = {
     "Kuala Lumpur Club",
     "吉隆坡会所SPA",
     "吉隆坡会所下水",
+    "吉隆坡会所水汇",
     "吉隆坡会所按摩",
     "吉隆坡会所娱乐",
     "KL Spa",
@@ -127,7 +132,7 @@ export const localBusinessJsonLd = {
   paymentAccepted: ["Cash", "Credit Card", "Debit Card"],
   currenciesAccepted: "MYR",
   description:
-    "吉隆坡会所 is a 24-hour spa, massage, hot-spring and wellness destination in Kuala Lumpur at Viva Home Mall, relevant for 吉隆坡会所、吉隆坡下水、吉隆坡按摩 and 吉隆坡娱乐 searches.",
+    "吉隆坡会所 is a 24-hour spa, massage, hot-spring and wellness destination in Kuala Lumpur at Viva Home Mall, relevant for 吉隆坡会所、吉隆坡下水、吉隆坡水汇、水汇、下水、吉隆坡按摩 and 吉隆坡娱乐 searches.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "LG Floor, Viva Home Mall, 85 Jalan Loke Yew, Taman Miharja",
@@ -155,6 +160,7 @@ export const localBusinessJsonLd = {
   ],
   makesOffer: [
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "吉隆坡会所下水" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "吉隆坡会所水汇" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "吉隆坡会所按摩" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "吉隆坡桑拿" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "吉隆坡上门按摩" } },
@@ -162,11 +168,15 @@ export const localBusinessJsonLd = {
   knowsAbout: [
     "吉隆坡SPA",
     "吉隆坡会所 吉隆坡下水",
+    "吉隆坡会所 吉隆坡水汇",
     "吉隆坡会所 吉隆坡按摩",
     "吉隆坡会所 吉隆坡娱乐",
     "吉隆坡水疗",
     "吉隆坡按摩",
     "吉隆坡下水",
+    "吉隆坡水汇",
+    "下水",
+    "水汇",
     "吉隆坡莞式按摩服务",
     "莞式按摩吉隆坡",
     "吉隆坡温泉",

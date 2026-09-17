@@ -5,17 +5,21 @@ import { localBusinessJsonLd, pageMetadata, siteUrl } from "./seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   ...pageMetadata({
-    title: "吉隆坡会所 | 吉隆坡下水 · 吉隆坡按摩娱乐",
+    title: "吉隆坡会所 | 吉隆坡下水 · 吉隆坡水汇 · 吉隆坡按摩娱乐",
     description:
-      "吉隆坡会所 at Viva Home Mall Kuala Lumpur: 24-hour spa, hot spring, 吉隆坡下水, 吉隆坡按摩, 吉隆坡娱乐, 吉隆坡莞式按摩服务, beauty, TCM wellness and home massage booking.",
+      "吉隆坡会所 at Viva Home Mall Kuala Lumpur: 24-hour spa, hot spring, 吉隆坡下水, 吉隆坡水汇, 下水, 水汇, 吉隆坡按摩, 吉隆坡娱乐, 吉隆坡莞式按摩服务, beauty, TCM wellness and home massage booking.",
     path: "/",
     keywords: [
       "吉隆坡会所 吉隆坡下水",
+      "吉隆坡会所 吉隆坡水汇",
       "吉隆坡会所 吉隆坡按摩",
       "吉隆坡会所 吉隆坡娱乐",
       "吉隆坡会所 SPA",
       "吉隆坡按摩推荐",
       "吉隆坡下水",
+      "吉隆坡水汇",
+      "下水",
+      "水汇",
       "吉隆坡莞式按摩服务",
       "Kuala Lumpur spa",
       "Viva Home Mall massage",

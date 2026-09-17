@@ -31,8 +31,9 @@ test("server-renders the 吉隆坡会所 page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>吉隆坡会所 \| 吉隆坡下水 · 按摩娱乐会所<\/title>/i);
+  assert.match(html, /<title>吉隆坡会所 \| 吉隆坡下水 · 吉隆坡水汇 · 按摩娱乐会所<\/title>/i);
   assert.match(html, /name="keywords" content="[^"]*吉隆坡SPA[^"]*吉隆坡会所[^"]*klspa/i);
+  assert.match(html, /name="keywords" content="[^"]*吉隆坡水汇[^"]*下水[^"]*水汇/i);
   assert.match(html, /favicon-48x48\.png/);
   assert.match(html, /apple-touch-icon\.png/);
   assert.match(html, /application\/ld\+json/);
