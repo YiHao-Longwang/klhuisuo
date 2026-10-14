@@ -5592,57 +5592,57 @@ html:has(.subnav) { scroll-padding-top: calc(var(--header-h) + 105px + 1.5rem); 
   box-shadow: 0 12px 28px rgba(42, 171, 238, .24);
 }
 
-/* Chinese sweets catalogue. Replace public/assets/china-candy-catalog.jpg with the final photo. */
-.journal-home .candy-section {
+/* Chinese smoke catalogue. */
+.journal-home .smoke-section {
   padding-block: 90px;
   border-top: 1px solid var(--line-2);
   background: #f4efe5;
 }
 
-.candy-grid {
+.smoke-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
   gap: clamp(36px, 6vw, 90px);
   align-items: center;
 }
 
-.candy-copy h2 {
+.smoke-copy h2 {
   margin: 18px 0;
 }
 
-.candy-copy > p {
+.smoke-copy > p {
   max-width: 40ch;
   color: var(--ink-2);
   font-size: 13px;
   line-height: 1.9;
 }
 
-.candy-copy .contact-pair {
+.smoke-copy .contact-pair {
   justify-content: flex-start;
   margin-top: 26px;
   gap: 8px;
 }
 
-.candy-copy .contact-pair .btn {
+.smoke-copy .contact-pair .btn {
   min-height: 42px;
   padding: 12px;
   font-size: 11px;
   gap: 7px;
 }
 
-.candy-figure {
+.smoke-figure {
   margin: 0;
 }
 
-.candy-figure img {
+.smoke-figure img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border: 1px solid var(--line-2);
 }
 
-.candy-figure figcaption {
+.smoke-figure figcaption {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -5653,18 +5653,15 @@ html:has(.subnav) { scroll-padding-top: calc(var(--header-h) + 105px + 1.5rem); 
 }
 
 @media (max-width: 780px) {
-  .candy-grid {
+  .smoke-grid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
 }
 
 @media (max-width: 600px) {
-  .journal-home .candy-section {
+  .journal-home .smoke-section {
     padding-block: 50px;
   }
 
-  .candy-figure img {
-    aspect-ratio: 4 / 3;
-  }
 }

@@ -57,28 +57,29 @@ export function HomeExperience({ locale, contact }: { locale: "en" | "cn"; conta
 
       <section className="care-directory container"><div><div className="journal-label">04 / {t("A LITTLE MORE CARE", "多一份照顾")}</div><h2>{t("Your own kind", "照顾自己，")}<br /><em>{t("of wellbeing.", "不止一种方式。")}</em></h2></div><div className="care-links">{[["packages/#treatments","Massage & body care","按摩与身体护理","Tui na, foot therapy and traditional body polish.","推拿、足疗与古法搓背。"],["tcm/","TCM wellness","中医调理","Start with a conversation and a pulse assessment.","从沟通与把脉开始，了解身体。"],["home-massage/","Care, brought to you","上门按摩","Massage at your home or hotel, within 30km.","30 公里范围内，送到住家或酒店的放松。"]].map(([href,en,zh,desc,zhDesc]) => <a href={`${base}/${href}`} key={href}><div><h3>{t(en,zh)}</h3><p>{t(desc,zhDesc)}</p></div><span aria-hidden="true">↗</span></a>)}</div></section>
 
-      <section className="candy-section">
-        <div className="container candy-grid">
-          <div className="candy-copy">
-            <div className="journal-label">05 / {t("CHINESE SWEETS", "中国糖果")}</div>
-            <h2>{t("Sweet finds", "来自中国，")}<br /><em>{t("from China.", "甜一点。")}</em></h2>
-            <p>{t(
-              "A rotating selection of sweets and snacks from China. The product photo and details will be updated shortly.",
-              "精选中国糖果与零食。商品图片与详情即将更新，欢迎通过以下方式咨询。",
-            )}</p>
+      <section className="smoke-section">
+        <div className="container smoke-grid">
+          <div className="smoke-copy">
+            <div className="journal-label">05 / {t("CHINESE SMOKE", "中国烟草")}</div>
+            <h2>
+              {t("Smoke finds", "来自中国，")}
+              <br />
+              <em>{t("from China.", "烟草精选。")}</em>
+            </h2>
             {contact}
           </div>
-          <figure className="candy-figure">
+
+          <figure className="smoke-figure">
             <img
-              src="/assets/china-candy-catalog.jpg"
-              alt={t("Chinese sweets catalogue placeholder", "中国糖果商品图片占位图")}
-              width="1600"
-              height="1000"
+              src="/assets/china-smoke-catalog.jpeg"
+              alt={t("Chinese smoke catalogue", "中国烟草商品价目表")}
+              width="1024"
+              height="1536"
               loading="lazy"
             />
             <figcaption>
-              <span>{t("CHINESE SWEETS", "中国糖果")}</span>
-              <span>{t("IMAGE COMING SOON", "商品图片即将更新")}</span>
+              <span>{t("CHINESE SMOKE", "中国烟草")}</span>
+              <span>{t("PRODUCT CATALOGUE", "商品价目表")}</span>
             </figcaption>
           </figure>
         </div>
