@@ -26,7 +26,7 @@ export function HomeExperience({ locale, contact }: { locale: "en" | "cn"; conta
           <p className="opening-intro">{t("A Kuala Lumpur bathhouse, with time on your side.", `${brandCn}，一间把时间留给你的汤泉会所。`)}</p>
           <p className="opening-description">{t("Warm water. A little quiet. A table when you’re hungry. Come to LG Floor at Viva Home Mall and let the hours be yours.", "泡一池温汤，寻一处安静，饿了就好好吃顿饭。来 Viva Home Mall LG Floor，把匆忙留在门外。")}</p>
           <div className="opening-actions"><a className="btn" href="#featured">{t("Find your stay", "选一段慢时光")}<span aria-hidden="true">↗</span></a><a className="journal-link" href="#ritual">{t("Explore the ritual", "从泡汤开始")}<span aria-hidden="true">↓</span></a></div>
-          <div className="opening-note"><span className="opening-number">12<span>h</span></span><p>{t("Your time starts at check-in.", "从入场那一刻，开始计时。")}<br /><span>{t("12-hour entry from RM169++", "12 小时门票 RM169++ 起")}</span></p></div>
+          <div className="opening-note"><span className="opening-number">12<span>h</span></span><p>{t("Your time starts at check-in.", "从入场那一刻，开始计时。")}<br /><span>{t("12-hour entry from RM169", "12 小时门票 RM169 起")}</span></p></div>
         </div>
         <figure className="opening-image"><img src="/assets/generated/bath-pool.jpg" alt={t("Illustrative jade-water bath with soft light and drifting steam", "意境示意：柔光与薄雾中的碧色汤池")} width="1672" height="941" fetchPriority="high" /><figcaption><span>{brandCn} · {brandEn.toUpperCase()}</span><span>{t("An invitation to pause", "给自己，一点留白")}</span></figcaption></figure>
       </section>
@@ -39,10 +39,10 @@ export function HomeExperience({ locale, contact }: { locale: "en" | "cn"; conta
       </section>
 
       <section id="featured" className="stay-section container">
-        <div className="menu-intro"><div className="journal-label">02 / {t("ENTRY PRICES", "普通价目")}</div><h2>{t("Make room", "留一点时间，")}<br /><em>{t("for yourself.", "给自己。")}</em></h2><p>{t("Only regular entry prices are shown here. Massage, scrub, beauty and TCM services are separate add-ons.", "这里只列普通入场价。按摩、搓背、美容与中医项目另行加购。")}</p><a className="journal-link" href={`${base}/packages/#treatments`}>{t("Full treatment menu", "查看完整护理价目")}<span aria-hidden="true">↗</span></a></div>
+        <div className="menu-intro"><div className="journal-label">02 / {t("ENTRY PRICES", "普通价目")}</div><h2>{t("Make room", "留一点时间，")}<br /><em>{t("for yourself.", "给自己。")}</em></h2><p>{t("Only regular entry prices are shown here. Massage, scrub and TCM services are separate add-ons.", "这里只列普通入场价。按摩、搓背与中医项目另行加购。")}</p><a className="journal-link" href={`${base}/packages/#treatments`}>{t("Full treatment menu", "查看完整护理价目")}<span aria-hidden="true">↗</span></a></div>
         <div className="stay-menu"><div className="menu-column-head"><span>{t("ENTRY / NOTES", "入场 / 说明")}</span><span>{t("SUN–THU", "周日–周四")}</span><span>{t("FRI–SAT / PH", "周五–周六 / 假日")}</span><span /></div>
-          {menu.map(([id, en, zh, desc, zhDesc, weekday, weekend]) => <a key={id} className="stay-row" href={`${base}/packages/#pk-${id}`}><div><h3>{t(en, zh)}</h3><p>{t(desc, zhDesc)}</p></div><span className="menu-price"><small>RM</small>{weekday}<sup>++</sup></span><span className="menu-price"><small>RM</small>{weekend}<sup>++</sup></span><span className="menu-arrow" aria-hidden="true">↗</span></a>)}
-          <p className="menu-footnote">{t("++ = 10% service charge + 8% SST. Sunday is the weekday tier. Public holidays use the higher tier.", "++ = 10% 服务费 + 8% SST。星期日按平日收费，公共假期按高价档收费。")}</p>
+          {menu.map(([id, en, zh, desc, zhDesc, weekday, weekend]) => <a key={id} className="stay-row" href={`${base}/packages/#pk-${id}`}><div><h3>{t(en, zh)}</h3><p>{t(desc, zhDesc)}</p></div><span className="menu-price"><small>RM</small>{weekday}</span><span className="menu-price"><small>RM</small>{weekend}</span><span className="menu-arrow" aria-hidden="true">↗</span></a>)}
+          <p className="menu-footnote">{t("Sunday uses the weekday tier. Public holidays use the higher tier.", "星期日按平日收费，公共假期按高价档收费。")}</p>
           <a className="journal-link" href={`${base}/packages/#featured`}>{t("View regular price list", "查看普通价目")}<span aria-hidden="true">↗</span></a>
         </div>
       </section>
@@ -55,9 +55,36 @@ export function HomeExperience({ locale, contact }: { locale: "en" | "cn"; conta
         </div>
       </section>
 
-      <section className="care-directory container"><div><div className="journal-label">04 / {t("A LITTLE MORE CARE", "多一份照顾")}</div><h2>{t("Your own kind", "照顾自己，")}<br /><em>{t("of wellbeing.", "不止一种方式。")}</em></h2></div><div className="care-links">{[["packages/#treatments","Massage & body care","按摩与身体护理","Tui na, foot therapy and traditional body polish.","推拿、足疗与古法搓背。"],["beauty/","Beauty studio","美容护理","Time for your skin, with one-to-one care.","一对一护理，把时间留给肌肤。"],["tcm/","TCM wellness","中医调理","Start with a conversation and a pulse assessment.","从沟通与把脉开始，了解身体。"],["home-massage/","Care, brought to you","上门按摩","Massage at your home or hotel, within 30km.","30 公里范围内，送到住家或酒店的放松。"]].map(([href,en,zh,desc,zhDesc]) => <a href={`${base}/${href}`} key={href}><div><h3>{t(en,zh)}</h3><p>{t(desc,zhDesc)}</p></div><span aria-hidden="true">↗</span></a>)}</div></section>
+      <section className="care-directory container"><div><div className="journal-label">04 / {t("A LITTLE MORE CARE", "多一份照顾")}</div><h2>{t("Your own kind", "照顾自己，")}<br /><em>{t("of wellbeing.", "不止一种方式。")}</em></h2></div><div className="care-links">{[["packages/#treatments","Massage & body care","按摩与身体护理","Tui na, foot therapy and traditional body polish.","推拿、足疗与古法搓背。"],["tcm/","TCM wellness","中医调理","Start with a conversation and a pulse assessment.","从沟通与把脉开始，了解身体。"],["home-massage/","Care, brought to you","上门按摩","Massage at your home or hotel, within 30km.","30 公里范围内，送到住家或酒店的放松。"]].map(([href,en,zh,desc,zhDesc]) => <a href={`${base}/${href}`} key={href}><div><h3>{t(en,zh)}</h3><p>{t(desc,zhDesc)}</p></div><span aria-hidden="true">↗</span></a>)}</div></section>
 
-      <section id="faq" className="visit-section"><div className="container visit-grid"><div><div className="journal-label">05 / {t("WHEN YOU’RE READY", "准备好，就来吧")}</div><h2>{t("A message away.", "发个消息，问一下。")}</h2><p>{t("Tell us your guest count and arrival time. Our team can help with current availability and service details.", "把人数和大概到店时间告诉我们。客服可以协助你了解当天安排与项目细节。")}</p>{contact}<a className="journal-link" href={`${base}/contact/`}>{t("Find us at Viva Home Mall · LG Floor", "Viva Home Mall LG Floor · 到店指引")}<span aria-hidden="true">↗</span></a></div><div className="visit-notes"><div><span>01</span><h3>{t("Come at any hour", "随时都欢迎")}</h3><p>{t("Open 24 hours. A 12-hour entry starts when you check in.", "全天 24 小时营业。12 小时门票从入场计时。")}</p></div><div><span>02</span><h3>{t("Ask before coming", "来之前先问问")}</h3><p>{t("Message us for current service availability and room details.", "可以先联系客服了解当天项目与房型情况。")}</p></div><a className="journal-link" href={`${base}/faq/`}>{t("More before-you-come questions", "第一次来，想多了解一点")}<span aria-hidden="true">↗</span></a></div></div></section>
+      <section className="candy-section">
+        <div className="container candy-grid">
+          <div className="candy-copy">
+            <div className="journal-label">05 / {t("CHINESE SWEETS", "中国糖果")}</div>
+            <h2>{t("Sweet finds", "来自中国，")}<br /><em>{t("from China.", "甜一点。")}</em></h2>
+            <p>{t(
+              "A rotating selection of sweets and snacks from China. The product photo and details will be updated shortly.",
+              "精选中国糖果与零食。商品图片与详情即将更新，欢迎通过以下方式咨询。",
+            )}</p>
+            {contact}
+          </div>
+          <figure className="candy-figure">
+            <img
+              src="/assets/china-candy-catalog.jpg"
+              alt={t("Chinese sweets catalogue placeholder", "中国糖果商品图片占位图")}
+              width="1600"
+              height="1000"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>{t("CHINESE SWEETS", "中国糖果")}</span>
+              <span>{t("IMAGE COMING SOON", "商品图片即将更新")}</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="faq" className="visit-section"><div className="container visit-grid"><div><div className="journal-label">06 / {t("WHEN YOU’RE READY", "准备好，就来吧")}</div><h2>{t("A message away.", "发个消息，问一下。")}</h2><p>{t("Tell us your guest count and arrival time. Our team can help with current availability and service details.", "把人数和大概到店时间告诉我们。客服可以协助你了解当天安排与项目细节。")}</p>{contact}<a className="journal-link" href={`${base}/contact/`}>{t("Find us at Viva Home Mall · LG Floor", "Viva Home Mall LG Floor · 到店指引")}<span aria-hidden="true">↗</span></a></div><div className="visit-notes"><div><span>01</span><h3>{t("Come at any hour", "随时都欢迎")}</h3><p>{t("Open 24 hours. A 12-hour entry starts when you check in.", "全天 24 小时营业。12 小时门票从入场计时。")}</p></div><div><span>02</span><h3>{t("Ask before coming", "来之前先问问")}</h3><p>{t("Message us for current service availability and room details.", "可以先联系客服了解当天项目与房型情况。")}</p></div><a className="journal-link" href={`${base}/faq/`}>{t("More before-you-come questions", "第一次来，想多了解一点")}<span aria-hidden="true">↗</span></a></div></div></section>
     </main>
     <Footer locale={locale} /><FloatingWhatsApp locale={locale} />
   </>;

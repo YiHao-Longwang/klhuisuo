@@ -5437,3 +5437,234 @@ main:not(.journal-home) :is(.mini-card,.fac,.card):hover { transform: none; box-
   .footer-top { gap: 25px; }
   .footer-cta .btn { font-size: 12px; }
 }
+
+
+/* Chinese reservation details, downloadable receipt and contact-first admin cards */
+.reservation-confirm-panel { width: min(620px, calc(100vw - 32px)); }
+.reservation-confirm-panel [data-reservation-entry],
+.reservation-confirm-panel [data-reservation-success] { width: 100%; }
+.reservation-step { display: inline-flex; margin-bottom: 10px; color: #a17a38; font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+.reservation-details-form { display: grid; gap: 14px; margin-top: 20px; text-align: left; }
+.reservation-details-form label,
+.reserve-form label { display: grid; gap: 7px; }
+.reservation-details-form label > span,
+.reserve-form label > span { font-size: 13px; font-weight: 750; }
+.reservation-details-form input,
+.reservation-details-form textarea { width: 100%; border: 1px solid rgba(25,53,47,.2); border-radius: 12px; background: #fff; padding: 13px 14px; color: #25211d; font: inherit; }
+.reservation-details-form input:focus,
+.reservation-details-form textarea:focus { border-color: #a17a38; outline: 3px solid rgba(161,122,56,.12); }
+.reservation-privacy { margin: 0; color: #71685f; font-size: 12px; }
+.reservation-success { width: 100%; text-align: center; }
+.reservation-success > h3 { margin: 10px 0 4px; }
+.reservation-receipt { margin-top: 20px; overflow: hidden; border: 1px solid rgba(25,53,47,.15); border-radius: 20px; background: #fff; color: #28231f; text-align: left; box-shadow: 0 16px 50px rgba(31,28,24,.12); }
+.reservation-receipt header { display: flex; justify-content: space-between; gap: 18px; padding: 22px 24px; background: #19352f; color: #fff; }
+.reservation-receipt header span { color: #d7b779; font-size: 12px; font-weight: 700; }
+.reservation-receipt header h4 { margin: 4px 0 0; color: #fff; font-size: 25px; }
+.reservation-receipt header > b { align-self: flex-start; border-radius: 999px; background: rgba(215,183,121,.16); padding: 7px 10px; color: #f1d79c; font-size: 11px; white-space: nowrap; }
+.reservation-receipt-ref { padding: 20px 24px 16px; border-bottom: 1px solid #eee5da; }
+.reservation-receipt-ref span,
+.reservation-receipt-customer span { display: block; color: #83766b; font-size: 11px; font-weight: 700; letter-spacing: .05em; }
+.reservation-receipt-ref strong { display: block; margin-top: 4px; color: #19352f; font-size: 24px; overflow-wrap: anywhere; }
+.reservation-receipt-customer { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 16px 24px; border-bottom: 1px solid #eee5da; }
+.reservation-receipt-customer b { display: block; margin-top: 5px; overflow-wrap: anywhere; }
+.reservation-receipt-items { padding: 8px 24px; }
+.reservation-receipt-item { display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-bottom: 1px solid #eee5da; }
+.reservation-receipt-item span { display: block; margin-top: 5px; color: #83766b; font-size: 12px; }
+.reservation-receipt-item strong { color: #19352f; white-space: nowrap; }
+.reservation-receipt-totals { margin-left: auto; width: min(320px, 100%); padding: 14px 24px 20px; }
+.reservation-receipt-totals > div { display: flex; justify-content: space-between; gap: 16px; padding: 5px 0; }
+.reservation-receipt-totals .grand { margin-top: 6px; border-top: 1px solid #d7b779; padding-top: 12px; color: #19352f; font-size: 18px; }
+.reservation-receipt footer { display: flex; justify-content: space-between; gap: 20px; padding: 17px 24px; background: #f6f0e7; color: #71685f; font-size: 12px; }
+.reservation-receipt footer strong { color: #19352f; white-space: nowrap; }
+.reservation-receipt-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.reserve-form.reservation-complete { padding: 0; background: transparent; box-shadow: none; }
+.reserve-form.reservation-complete .reserve-status { margin: 0; }
+.admin-customer-panel { margin: 18px 0; border: 1px solid rgba(31,95,74,.22); border-radius: 16px; background: #f2f8f5; padding: 17px 18px; }
+.admin-contact-label { display: block; margin-bottom: 6px; color: #63756e; font-size: 11px; font-weight: 800; letter-spacing: .1em; }
+.admin-phone-value { display: inline-block; color: #123f32; font-size: clamp(21px, 2.8vw, 30px); font-weight: 850; line-height: 1.2; overflow-wrap: anywhere; }
+.admin-phone-value.invalid { color: #913b32; }
+.admin-phone-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.admin-copy-phone { cursor: pointer; font: inherit; }
+.admin-contact-warning { margin: 8px 0 0; color: #a2362b; font-weight: 750; }
+.admin-secondary-contact { margin: 10px 0 0; color: #635d57; font-size: 13px; }
+@media (max-width: 620px) {
+  .reservation-receipt-customer, .reservation-receipt-actions { grid-template-columns: 1fr; }
+  .reservation-receipt header, .reservation-receipt footer { align-items: flex-start; flex-direction: column; }
+  .reservation-receipt-ref, .reservation-receipt-customer, .reservation-receipt-items, .reservation-receipt-totals { padding-inline: 17px; }
+}
+
+/* Prominent arrival reminder, repeated in the shared header on every page. */
+.reservation-header-banner {
+  background: linear-gradient(100deg, #71372e 0%, #8e4333 48%, #71372e 100%);
+  border-top: 1px solid rgba(255, 233, 188, .35);
+  border-bottom: 2px solid #cfab6a;
+  color: #fff9ef;
+  box-shadow: 0 8px 24px rgba(68, 34, 27, .16);
+}
+.reservation-header-inner {
+  width: min(1440px, calc(100% - 48px));
+  min-height: 50px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.8vw, 28px);
+  padding-block: 7px;
+}
+.reservation-header-eyebrow {
+  flex: none;
+  border: 1px solid rgba(255, 233, 188, .65);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #f4d79f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.reservation-header-inner strong {
+  color: #fff;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: clamp(18px, 2vw, 27px);
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(32, 14, 10, .3);
+  white-space: nowrap;
+}
+.reservation-header-channels {
+  color: #f4d79f;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.reservation-header-inner a {
+  flex: none;
+  border-radius: 999px;
+  background: #f7dfac;
+  padding: 7px 13px;
+  color: #693128;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .2s ease, background .2s ease;
+}
+.reservation-header-inner a:hover { background: #fff1d2; transform: translateY(-2px); }
+.subnav { top: calc(var(--header-h) + 52px); }
+html:has(.subnav) { scroll-padding-top: calc(var(--header-h) + 105px + 1.5rem); }
+.package-contact-pair, .outcall-contact-pair { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; width: 100%; }
+.package-contact-pair .btn, .outcall-contact-pair .btn { min-width: 0; justify-content: center; padding-inline: 8px; font-size: 11px; }
+@media (max-width: 900px) {
+  .reservation-header-inner { width: min(100% - 24px, 700px); gap: 9px; }
+  .reservation-header-channels { display: none; }
+}
+@media (max-width: 600px) {
+  .reservation-header-inner { min-height: 59px; justify-content: space-between; }
+  .reservation-header-eyebrow { display: none; }
+  .reservation-header-inner strong { font-size: clamp(16px, 4.3vw, 21px); letter-spacing: .05em; white-space: normal; }
+  .reservation-header-inner a { padding: 7px 10px; }
+  .subnav { top: calc(var(--header-h) + 62px); }
+  html:has(.subnav) { scroll-padding-top: calc(var(--header-h) + 115px + 1.5rem); }
+  .package-contact-pair, .outcall-contact-pair { grid-template-columns: 1fr; }
+  .package-contact-pair .btn, .outcall-contact-pair .btn { font-size: 12px; }
+}
+
+
+/* Technician community buttons (WhatsApp group and Telegram channel). */
+.tech-inquiry-modal-actions { display: grid; gap: 10px; }
+.tech-inquiry-modal-actions a { width: 100%; text-decoration: none; }
+.tech-inquiry-modal-community {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 22px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 900;
+}
+.tech-inquiry-modal-community.whatsapp-community {
+  background: linear-gradient(135deg, #1fae58, #107c46);
+  box-shadow: 0 12px 28px rgba(31, 174, 88, .24);
+}
+.tech-inquiry-modal-community.telegram-channel {
+  background: linear-gradient(135deg, #2aabee, #1676a8);
+  box-shadow: 0 12px 28px rgba(42, 171, 238, .24);
+}
+
+/* Chinese sweets catalogue. Replace public/assets/china-candy-catalog.jpg with the final photo. */
+.journal-home .candy-section {
+  padding-block: 90px;
+  border-top: 1px solid var(--line-2);
+  background: #f4efe5;
+}
+
+.candy-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  gap: clamp(36px, 6vw, 90px);
+  align-items: center;
+}
+
+.candy-copy h2 {
+  margin: 18px 0;
+}
+
+.candy-copy > p {
+  max-width: 40ch;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.candy-copy .contact-pair {
+  justify-content: flex-start;
+  margin-top: 26px;
+  gap: 8px;
+}
+
+.candy-copy .contact-pair .btn {
+  min-height: 42px;
+  padding: 12px;
+  font-size: 11px;
+  gap: 7px;
+}
+
+.candy-figure {
+  margin: 0;
+}
+
+.candy-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid var(--line-2);
+}
+
+.candy-figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 780px) {
+  .candy-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .journal-home .candy-section {
+    padding-block: 50px;
+  }
+
+  .candy-figure img {
+    aspect-ratio: 4 / 3;
+  }
+}

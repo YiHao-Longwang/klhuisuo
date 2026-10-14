@@ -76,7 +76,7 @@ function channelFilter(value: unknown) {
 
 function siteFilter(value: unknown) {
   const site = clean(value, 40).toLowerCase();
-  return site === "klhuisuo" || site === "onespa" || site === "unknown" ? site : "all";
+  return ["jinyuehui", "onespa", "klhuisuo", "unknown"].includes(site) ? site : "all";
 }
 
 function sourceForPath(path: string) {

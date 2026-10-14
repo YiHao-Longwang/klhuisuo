@@ -144,6 +144,11 @@ function cents(value) {
   return Math.round(value * 100);
 }
 
+function validCustomerPhone(value) {
+  const digits = String(value || "").replace(/\D/g, "");
+  return digits.length >= 8 && digits.length <= 15;
+}
+
 function errorResponse(res, message, status = 400) {
   return res.status(status).json({ error: message });
 }
@@ -327,7 +332,7 @@ async function ensureContactClicksTable(sql) {
     update contact_clicks
     set site = case
       when source = 'baiqu' or path ~ '^/(cn/)?baiqu(/|$)' then 'onespa'
-      when source = 'main' then 'klhuisuo'
+      when source = 'main' then 'jinyuehui'
       else site
     end
     where (site is null or site = '')
@@ -357,7 +362,7 @@ function channelFilter(value) {
 
 function siteFilter(value) {
   const site = clean(value, 40).toLowerCase();
-  return site === "klhuisuo" || site === "onespa" || site === "unknown" ? site : "all";
+  return ["jinyuehui", "onespa", "klhuisuo", "unknown"].includes(site) ? site : "all";
 }
 
 function sourceForPath(path) {
@@ -846,61 +851,8 @@ app.post("/api/contact-clicks", async (req, res) => {
   }
 });
 
-app.post("/api/reservations", async (req, res) => {
-  const payload = req.body || {};
-  const customer = payload.customer || {};
-  const name = String(customer.name || "").trim();
-  const phone = String(customer.phone || "").trim();
-  const telegram = String(customer.telegram || "").trim();
-
-  if (!name) return errorResponse(res, "Customer name is required.");
-  if (!phone && !telegram) return errorResponse(res, "Please provide WhatsApp phone or Telegram username.");
-  if (!Array.isArray(payload.items) || !payload.items.length) return errorResponse(res, "Cart is empty.");
-
-  let totals;
-  try {
-    totals = calculate(payload.items);
-  } catch (error) {
-    return errorResponse(res, error instanceof Error ? error.message : "Invalid reservation.");
-  }
-
-  try {
-    const sql = db();
-    await ensureTable(sql);
-    const ref = makeRef();
-    const [reservation] = await sql`
-      insert into reservations (
-        reservation_ref, locale, customer_name, customer_phone, customer_telegram, customer_email,
-        customer_notes, visit_date, items, subtotal_cents, service_charge_cents,
-        sst_cents, total_cents
-      )
-      values (
-        ${ref}, ${payload.locale || "en"}, ${name}, ${phone || null}, ${telegram || null}, ${String(customer.email || "").trim() || null},
-        ${String(customer.notes || "").trim() || null}, ${totals.items[0].date}, ${JSON.stringify(totals.items)}::jsonb,
-        ${cents(totals.subtotal)}, ${cents(totals.serviceCharge)}, ${cents(totals.sst)},
-        ${cents(totals.total)}
-      )
-      returning reservation_ref, status, locale, customer_name, customer_phone,
-        customer_telegram, customer_email, customer_notes, visit_date, items, subtotal_cents,
-        service_charge_cents, sst_cents, total_cents, payment_status,
-        payment_timing, reminder_sent_at, created_at
-    `;
-
-    io.to("admins").emit("reservation:created", reservation);
-    notifyTelegram(reservation).catch((error) => console.warn("Telegram notification error:", error));
-
-    res.status(201).json({
-      reservation,
-      totals,
-      payment: "pay_after_treatment",
-      message:
-        payload.locale === "cn"
-          ? "预约已记录。客服会尽快跟进。"
-          : "Reservation recorded. Our team will follow up soon.",
-    });
-  } catch (error) {
-    errorResponse(res, error instanceof Error ? error.message : "Could not save reservation.", 500);
-  }
+app.post("/api/reservations", (_req, res) => {
+  return errorResponse(res, "线上预约已关闭，请通过 WhatsApp、WeChat 或 Telegram 联系客服。", 410);
 });
 
 app.patch("/api/reservations", async (req, res) => {

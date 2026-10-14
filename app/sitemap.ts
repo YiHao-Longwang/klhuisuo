@@ -7,7 +7,6 @@ const routes = [
   "/packages",
   "/facilities",
   "/home-massage",
-  "/beauty",
   "/tcm",
   "/wenquan",
   "/faq",

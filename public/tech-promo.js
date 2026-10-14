@@ -4,6 +4,8 @@
   var promoHidden = true;
   var whatsappHref =
     "https://wa.me/60143155632?text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E5%92%A8%E8%AF%A2%E6%8A%80%E5%B8%88%E6%8C%91%E9%80%89";
+  var whatsappCommunityHref = "https://chat.whatsapp.com/HeRVJw5e6E12vbzpmP0oBr";
+  var telegramChannelHref = "https://t.me/kleznet168";
   var popup = null;
   var modal = null;
   var timer = null;
@@ -129,14 +131,22 @@
     modal.hidden = true;
     modal.innerHTML =
       '<div class="tech-inquiry-modal-backdrop" data-tech-modal-close></div>' +
-      '<section class="tech-inquiry-modal-card" role="dialog" aria-modal="true" aria-label="技师挑选 WhatsApp 咨询">' +
+      '<section class="tech-inquiry-modal-card" role="dialog" aria-modal="true" aria-label="技师挑选联系与群组">' +
       '<button class="tech-inquiry-modal-close" type="button" data-tech-modal-close aria-label="关闭">&times;</button>' +
       '<span class="tech-inquiry-modal-kicker">最新!! 男士必看</span>' +
       "<h3>技师挑选</h3>" +
-      "<p>可以通过 WhatsApp 咨询更多关于技师挑选的内容哦 💋✨</p>" +
+      "<p>向客服咨询技师，或加入群组接收最新消息 💋✨</p>" +
+      '<div class="tech-inquiry-modal-actions">' +
       '<a class="tech-inquiry-modal-whatsapp contact-wa whatsapp" href="' +
       whatsappHref +
       '" target="_blank" rel="noopener" data-click-source="jishi_tiaoxuan" aria-label="WhatsApp 咨询技师挑选">WhatsApp 咨询客服</a>' +
+      '<a class="tech-inquiry-modal-community whatsapp-community" href="' +
+      whatsappCommunityHref +
+      '" target="_blank" rel="noopener" data-click-source="jishi_tiaoxuan" aria-label="加入 WhatsApp 群组">加入 WhatsApp 群组</a>' +
+      '<a class="tech-inquiry-modal-community telegram-channel" href="' +
+      telegramChannelHref +
+      '" target="_blank" rel="noopener" data-click-source="jishi_tiaoxuan" aria-label="加入 Telegram 频道">加入 Telegram 频道</a>' +
+      "</div>" +
       "</section>";
     document.body.appendChild(modal);
     modal.addEventListener("click", function (event) {

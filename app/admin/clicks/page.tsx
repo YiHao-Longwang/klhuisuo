@@ -39,8 +39,9 @@ export default function AdminClickHistoryPage() {
               <span>Site</span>
               <select data-click-site defaultValue="all">
                 <option value="all">All sites</option>
+                <option value="jinyuehui">金悦汇</option>
+                <option value="onespa">Nanhai Onsen</option>
                 <option value="klhuisuo">吉隆坡会所</option>
-                <option value="onespa">OneSpa</option>
                 <option value="unknown">Old records</option>
               </select>
             </label>
@@ -85,6 +86,7 @@ export default function AdminClickHistoryPage() {
         </header>
 
         <div className="admin-status" data-click-status />
+        <p className="fine" data-click-channel-note hidden>技师挑选目前提供 WhatsApp 与 Telegram；WeChat 不适用于这个区域。</p>
 
         <div className="click-tabs" role="tablist" aria-label="Contact click views">
           <button className="click-tab active" type="button" role="tab" aria-selected="true" data-click-tab="history">
@@ -117,7 +119,7 @@ export default function AdminClickHistoryPage() {
         </section>
       </section>
 
-      <script src="/admin-click-history.js?v=20260911-daily-groups" defer />
+      <script src="/admin-click-history.js?v=20261002-community" defer />
     </main>
   );
 }

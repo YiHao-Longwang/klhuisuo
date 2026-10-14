@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "吉隆坡会所 | 吉隆坡下水 · 吉隆坡水汇 · 吉隆坡按摩娱乐",
     description:
-      "吉隆坡会所 at Viva Home Mall Kuala Lumpur: 24-hour spa, hot spring, 吉隆坡下水, 吉隆坡水汇, 下水, 水汇, 吉隆坡按摩, 吉隆坡娱乐, 吉隆坡莞式按摩服务, beauty, TCM wellness and home massage booking.",
+      "吉隆坡会所 at Viva Home Mall Kuala Lumpur: 24-hour spa, hot spring, 吉隆坡下水, 吉隆坡水汇, 下水, 水汇, 吉隆坡按摩, 吉隆坡娱乐, 吉隆坡莞式按摩服务, TCM wellness and home massage booking.",
     path: "/",
     keywords: [
       "吉隆坡会所 吉隆坡下水",
@@ -59,10 +59,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         <script src="/motion.js?v=20260914-subnav-stable" defer />
-        <script src="/contact-clicks.js?v=20260908-wechat" defer />
-        <script src="/booking-cart.js?v=20260914-cn-root" defer />
+        <script src="/contact-clicks.js?v=20260922-chat-only" defer />
         <script src="/wechat-copy.js?v=20260903-wechat" defer />
-        <script src="/tech-promo.js?v=20260914-hidden" defer />
+        <script src="/tech-promo.js?v=20261002-community" defer />
       </body>
     </html>
   );

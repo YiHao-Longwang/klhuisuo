@@ -76,6 +76,31 @@
     return $("[data-click-source]")?.value || "all";
   }
 
+  // Technician selection offers WhatsApp support/community and a Telegram channel.
+  function syncChannelOptions() {
+    var select = $("[data-click-channel]");
+    if (!select) return;
+    var technicianOnly = currentSource() === "jishi_tiaoxuan";
+    var technicianChannels = ["all", "whatsapp", "telegram"];
+    Array.from(select.options).forEach(function (option) {
+      option.hidden = technicianOnly && technicianChannels.indexOf(option.value) === -1;
+      option.disabled = option.hidden;
+    });
+    if (technicianOnly && technicianChannels.indexOf(select.value) === -1) select.value = "all";
+    else if (!technicianOnly && select.dataset.technicianOnly === "true") select.value = "all";
+    select.dataset.technicianOnly = String(technicianOnly);
+    var note = $("[data-click-channel-note]");
+    if (note) note.hidden = !technicianOnly;
+  }
+
+  function graphChannels() {
+    var channel = currentChannel();
+    if (currentSource() === "jishi_tiaoxuan") {
+      return channel === "all" ? ["whatsapp", "telegram"] : [channel];
+    }
+    return channel === "all" ? ["whatsapp", "telegram", "wechat"] : [channel];
+  }
+
   function currentPeriod() {
     return $("[data-click-period]")?.value || "week";
   }
@@ -125,8 +150,9 @@
   }
 
   function siteLabel(site) {
+    if (site === "jinyuehui") return "金悦汇";
+    if (site === "onespa") return "Nanhai Onsen";
     if (site === "klhuisuo") return "吉隆坡会所";
-    if (site === "onespa") return "OneSpa";
     return "旧记录";
   }
 
@@ -208,15 +234,6 @@
     var innerHeight = height - padTop - padBottom;
     var lastIndex = Math.max(1, seriesRows.length - 1);
     var labelEvery = Math.max(1, Math.ceil(seriesRows.length / 7));
-    var whatsappTotal = seriesRows.reduce(function (sum, row) {
-      return sum + Number(row.whatsapp || 0);
-    }, 0);
-    var telegramTotal = seriesRows.reduce(function (sum, row) {
-      return sum + Number(row.telegram || 0);
-    }, 0);
-    var wechatTotal = seriesRows.reduce(function (sum, row) {
-      return sum + Number(row.wechat || 0);
-    }, 0);
 
     function x(index) {
       return padLeft + (index / lastIndex) * innerWidth;
@@ -302,109 +319,46 @@
       return '<span class="click-count ' + klass + '">' + Number(value || 0) + "</span>";
     }
 
-    function dailyTotalsTable() {
-      return (
-        '<div class="click-detail-card"><div class="click-detail-head"><span>Daily totals</span><b>unique IPs</b></div>' +
-        '<div class="click-table-scroll"><table class="click-breakdown-table"><thead><tr>' +
-        "<th>Date</th><th>WhatsApp</th><th>Telegram</th><th>WeChat</th><th>Total</th>" +
-        "</tr></thead><tbody>" +
-        seriesRows
-          .slice()
-          .reverse()
-          .map(function (row) {
-            return (
-              "<tr><td>" +
-              escapeHtml(formatDay(row.day)) +
-              "</td><td>" +
-              renderNumber(row.whatsapp, "wa") +
-              "</td><td>" +
-              renderNumber(row.telegram, "tg") +
-              "</td><td>" +
-              renderNumber(row.wechat, "wc") +
-              "</td><td><strong>" +
-              Number(row.total || 0) +
-              "</strong></td></tr>"
-            );
-          })
-          .join("") +
-        "</tbody></table></div></div>"
-      );
+    var channels = graphChannels();
+    var channelClasses = { whatsapp: "wa", telegram: "tg", wechat: "wc" };
+    function channelCells(row) {
+      return channels.map(function (channel) {
+        return "<td>" + renderNumber(row[channel], channelClasses[channel]) + "</td>";
+      }).join("");
     }
-
+    function channelHeaders() {
+      return channels.map(function (channel) { return "<th>" + channelLabel(channel) + "</th>"; }).join("");
+    }
+    function dailyTotalsTable() {
+      return '<div class="click-detail-card"><div class="click-detail-head"><span>Daily totals</span><b>unique IPs</b></div>' +
+        '<div class="click-table-scroll"><table class="click-breakdown-table"><thead><tr><th>Date</th>' + channelHeaders() +
+        '<th>Total</th></tr></thead><tbody>' + seriesRows.slice().reverse().map(function (row) {
+          return "<tr><td>" + escapeHtml(formatDay(row.day)) + "</td>" + channelCells(row) + "<td><strong>" + Number(row.total || 0) + "</strong></td></tr>";
+        }).join("") + "</tbody></table></div></div>";
+    }
     function dailyGroupsTable() {
       var rows = dailyGroupRows || [];
-      if (!rows.length) {
-        return '<div class="click-detail-card"><div class="click-detail-head"><span>Daily by site / area</span><b>unique IPs</b></div><div class="admin-empty">No grouped data for this period.</div></div>';
-      }
-      return (
-        '<div class="click-detail-card"><div class="click-detail-head"><span>Daily by site / area</span><b>first channel wins</b></div>' +
-        '<div class="click-table-scroll"><table class="click-breakdown-table group"><thead><tr>' +
-        "<th>Date</th><th>Site</th><th>Area</th><th>WhatsApp</th><th>Telegram</th><th>WeChat</th><th>Total</th>" +
-        "</tr></thead><tbody>" +
-        rows
-          .map(function (row) {
-            return (
-              "<tr><td>" +
-              escapeHtml(formatDay(row.day)) +
-              "</td><td>" +
-              escapeHtml(siteLabel(row.site)) +
-              "</td><td>" +
-              escapeHtml(sourceLabel(row.source)) +
-              "</td><td>" +
-              renderNumber(row.whatsapp, "wa") +
-              "</td><td>" +
-              renderNumber(row.telegram, "tg") +
-              "</td><td>" +
-              renderNumber(row.wechat, "wc") +
-              "</td><td><strong>" +
-              Number(row.total || 0) +
-              "</strong></td></tr>"
-            );
-          })
-          .join("") +
-        "</tbody></table></div></div>"
-      );
+      if (!rows.length) return '<div class="click-detail-card"><div class="click-detail-head"><span>Daily by site / area</span><b>unique IPs</b></div><div class="admin-empty">No grouped data for this period.</div></div>';
+      return '<div class="click-detail-card"><div class="click-detail-head"><span>Daily by site / area</span><b>first channel wins</b></div>' +
+        '<div class="click-table-scroll"><table class="click-breakdown-table group"><thead><tr><th>Date</th><th>Site</th><th>Area</th>' + channelHeaders() +
+        '<th>Total</th></tr></thead><tbody>' + rows.map(function (row) {
+          return "<tr><td>" + escapeHtml(formatDay(row.day)) + "</td><td>" + escapeHtml(siteLabel(row.site)) + "</td><td>" + escapeHtml(sourceLabel(row.source)) + "</td>" + channelCells(row) + "<td><strong>" + Number(row.total || 0) + "</strong></td></tr>";
+        }).join("") + "</tbody></table></div></div>";
     }
-
-    root.innerHTML =
-      '<div class="click-chart-summary"><div><span>WhatsApp</span><strong class="wa">' +
-      whatsappTotal +
-      '</strong></div><div><span>Telegram</span><strong class="tg">' +
-      telegramTotal +
-      '</strong></div><div><span>WeChat</span><strong class="wc">' +
-      wechatTotal +
-      '</strong></div><div><span>Highest day</span><strong>' +
-      max +
-      '</strong></div></div><div class="click-chart-legend"><span><i class="wa"></i>WhatsApp</span><span><i class="tg"></i>Telegram</span><span><i class="wc"></i>WeChat</span></div>' +
-      '<div class="click-line-wrap"><svg class="click-line-chart" viewBox="0 0 ' +
-      width +
-      " " +
-      height +
-      '" role="img" aria-label="WhatsApp, Telegram and WeChat unique IP line graph">' +
-      yAxis() +
-      '<line class="click-axis-line" x1="' +
-      padLeft +
-      '" x2="' +
-      (width - padRight) +
-      '" y1="' +
-      (padTop + innerHeight) +
-      '" y2="' +
-      (padTop + innerHeight) +
-      '"></line><path class="click-line wa" d="' +
-      linePath("whatsapp") +
-      '"></path><path class="click-line tg" d="' +
-      linePath("telegram") +
-      '"></path><path class="click-line wc" d="' +
-      linePath("wechat") +
-      '"></path>' +
-      points("whatsapp", "wa") +
-      points("telegram", "tg") +
-      points("wechat", "wc") +
-      xAxis() +
-      '</svg></div><div class="click-detail-grid">' +
-      dailyTotalsTable() +
-      dailyGroupsTable() +
-      "</div>";
+    var summaries = channels.map(function (channel) {
+      var count = seriesRows.reduce(function (sum, row) { return sum + Number(row[channel] || 0); }, 0);
+      return "<div><span>" + channelLabel(channel) + '</span><strong class="' + channelClasses[channel] + '">' + count + "</strong></div>";
+    }).join("");
+    var legend = channels.map(function (channel) {
+      return '<span><i class="' + channelClasses[channel] + '"></i>' + channelLabel(channel) + "</span>";
+    }).join("");
+    var lines = channels.map(function (channel) {
+      return '<path class="click-line ' + channelClasses[channel] + '" d="' + linePath(channel) + '"></path>' + points(channel, channelClasses[channel]);
+    }).join("");
+    root.innerHTML = '<div class="click-chart-summary">' + summaries + '<div><span>Highest day</span><strong>' + max + '</strong></div></div><div class="click-chart-legend">' + legend + '</div>' +
+      '<div class="click-line-wrap"><svg class="click-line-chart" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="' + channels.map(channelLabel).join(", ") + ' unique IP line graph">' +
+      yAxis() + '<line class="click-axis-line" x1="' + padLeft + '" x2="' + (width - padRight) + '" y1="' + (padTop + innerHeight) + '" y2="' + (padTop + innerHeight) + '"></line>' + lines + xAxis() +
+      '</svg></div><div class="click-detail-grid">' + dailyTotalsTable() + dailyGroupsTable() + '</div>';
   }
 
   function switchTab(tab) {
@@ -472,6 +426,7 @@
   }
 
   function refreshAll() {
+    syncChannelOptions();
     saveToken();
     if (!currentToken()) {
       setLoggedIn(false);
@@ -540,6 +495,7 @@
       if (event.key === "Enter") refreshAll();
     });
 
+    syncChannelOptions();
     switchTab(activeTab);
     if (tokenInput.value) refreshAll();
     else {

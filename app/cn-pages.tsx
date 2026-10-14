@@ -46,18 +46,10 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
     keywords: ["吉隆坡上门按摩", "吉隆坡按摩", "KL上门马杀鸡", "吉隆坡会所按摩"],
     image: "/assets/outcall-hero.jpg",
   },
-  beauty: {
-    title: "吉隆坡美容SPA | 美白嫩肤脱毛 · 吉隆坡会所",
-    description:
-      "吉隆坡会所美容部：全身亮肤、光子嫩肤、局部护理与脱毛项目，可搭配汤泉门票，男女皆可，一对一美容师服务。",
-    path: "/beauty/",
-    keywords: ["吉隆坡美容", "吉隆坡美容SPA", "吉隆坡水疗", "吉隆坡会所美容"],
-    image: "/assets/beauty-hero.jpg",
-  },
   tcm: {
     title: "吉隆坡中医调理 | 艾灸推拿正骨 · 吉隆坡会所",
     description:
-      "吉隆坡会所中医部：免费把脉、艾灸、中药泥灸、正骨与经络调理，驻店中医师一对一，价格清楚列明。",
+      "吉隆坡会所中医部：艾灸、中药泥灸、正骨与经络调理，驻店中医师一对一，价格清楚列明。",
     path: "/tcm/",
     keywords: ["吉隆坡中医", "吉隆坡艾灸", "吉隆坡推拿", "吉隆坡按摩", "吉隆坡会所中医"],
     image: "/assets/tcm-hero.jpg",
@@ -100,7 +92,7 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
 const cnFallbackSeo = {
   title: "吉隆坡会所 | 吉隆坡下水水汇按摩娱乐",
   description:
-    "吉隆坡会所中文页面：吉隆坡SPA、吉隆坡下水、吉隆坡水汇、下水、水汇、吉隆坡按摩、吉隆坡娱乐、24 小时汤泉、价目、设施、美容、中医与联系资料。",
+    "吉隆坡会所中文页面：吉隆坡SPA、吉隆坡下水、吉隆坡水汇、下水、水汇、吉隆坡按摩、吉隆坡娱乐、24 小时汤泉、价目、设施、中医与联系资料。",
   path: "/",
   keywords: ["吉隆坡SPA", "吉隆坡按摩", "吉隆坡娱乐", "吉隆坡会所", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇", "klspa", "klmassage", "klentertainment"],
 };
@@ -119,7 +111,7 @@ const packageCards = [
       { label: "星期五、六与公共假期", price: "199", per: "/ 人" },
     ],
     features: ["汤池、汗蒸、桑拿、休息区与餐饮区", "12 小时从入场开始计算", "每位成人各买一张普通入场票"],
-    notes: ["星期日和星期一到星期四同一档，走的是低价那一边。", "按摩、搓背、美容与中医项目另行加购。"],
+    notes: ["星期日和星期一到星期四同一档，走的是低价那一边。", "按摩、搓背与中医项目另行加购。"],
     button: "预约",
   },
   {
@@ -143,50 +135,49 @@ const treatmentGroups = [
     cn: "全身项目",
     en: "SPA / Full Body",
     rows: [
-      ["舒缓触感疗程", "60 分钟", "RM369++"],
-      ["热石深层排毒疗程", "80 分钟", "RM499++"],
-      ["法式尊享", "100 分钟", "RM699++"],
-      ["五行至尊 SPA", "110 分钟", "RM799++"],
+      ["玉手舒缓", "60 分钟", "RM369"],
+      ["肾能热石", "80 分钟", "RM499"],
+      ["法式尊享", "100 分钟", "RM699"],
+      ["五行至尊", "110 分钟", "RM799"],
     ],
   },
   {
     cn: "足疗项目",
     en: "Foot Massage",
     rows: [
-      ["经典足疗", "60 分钟", "RM299++"],
-      ["足疗", "80 分钟", "RM499++"],
+      ["经典足疗", "60 分钟", "RM299"],
+      ["套餐足疗", "80 分钟", "RM499"],
     ],
   },
   {
     cn: "指压项目",
     en: "Shiatsu Massage",
     rows: [
-      ["局部调理", "30 分钟", "RM199++"],
-      ["中式推拿", "60 分钟", "RM299++"],
-      ["传统泰式按摩", "70 分钟", "RM399++"],
+      ["局部理疗", "30 分钟", "RM199"],
+      ["中式推拿", "60 分钟", "RM299"],
+      ["古法泰式", "70 分钟", "RM399"],
     ],
   },
   {
     cn: "小项目",
     en: "Other Treatment",
     rows: [
-      ["舒耳疗程", "单次", "RM150++"],
-      ["唐式耳浴", "60 分钟", "RM299++"],
-      ["扬州修脚", "单次", "RM150++"],
-      ["穴位拔罐", "单次", "RM150++"],
-      ["经络刮痧", "单次", "RM150++"],
-      ["古法搓背", "单次", "RM150++"],
-      ["花式背踩", "30 分钟", "RM199++"],
-      ["洗眼 SPA", "单次", "RM150++"],
+      ["妙音舒耳", "单次", "RM150"],
+      ["大唐耳浴", "60 分钟", "RM299"],
+      ["扬州修脚", "单次", "RM150"],
+      ["穴位拔罐", "单次", "RM150"],
+      ["经络刮痧", "单次", "RM150"],
+      ["扬州搓背", "单次", "RM150"],
+      ["花式背踩", "30 分钟", "RM199"],
+      ["洗眼 SPA", "单次", "RM150"],
     ],
   },
   {
     cn: "保养项目",
     en: "Maintenance · Signature",
     rows: [
-      ["四手和韵疗程", "70 分钟", "RM999++"],
-      ["下肢深层调理", "90 分钟", "RM699++"],
-      ["骨盆能量调理", "90 分钟", "RM699++"],
+      ["下肢深层调理", "90 分钟", "RM699"],
+      ["骨盆能量调理", "90 分钟", "RM699"],
     ],
   },
 ];
@@ -252,7 +243,7 @@ const homePlans = [
     image: "outcall-plan-warm.jpg?osw=0.9.23",
     desc: "先用精油松开背部，再用传统泰式拉伸全身，两小时完整放松。",
     price: "RM699",
-    features: ["60 分钟精油按摩 + 60 分钟传统泰式，顺序固定", "开始时间 9:00 AM-10:00 PM", "适合酒店或家里好好留出一段放松时间", "线上最早可预约 3 小时后的时段；更急请 WhatsApp"],
+    features: ["60 分钟精油按摩 + 60 分钟传统泰式，顺序固定", "开始时间 9:00 AM-10:00 PM", "适合酒店或家里好好留出一段放松时间", "请通过 WhatsApp、WeChat 或 Telegram 咨询可预约时段"],
   },
   {
     code: "outcall-anytime",
@@ -261,17 +252,7 @@ const homePlans = [
     image: "outcall-plan-classic.jpg?osw=0.9.23",
     desc: "固定两小时，一个清楚价格。告诉我们你偏好精油、推拿、泰式或足部护理。",
     price: "RM798",
-    features: ["固定 120 分钟，RM798", "可备注偏好的精油、推拿、泰式或足疗组合", "全天可预约，最早为下单后 3 小时", "需要更长时间请直接 WhatsApp"],
-  },
-  {
-    code: "outcall-fourhands",
-    title: "四手尊宠 · 2 小时",
-    tag: "四手护理",
-    image: "outcall-plan-duo.jpg?osw=0.9.23",
-    desc: "两位技师同步护理，肩背与腿部同时照顾，两小时等于四小时手感。",
-    price: "RM1,699",
-    night: true,
-    features: ["两位技师同步，只服务一位客人", "背部与腿部同时护理，释放更快", "每日 9:00 AM-10:00 PM 可开始；RM100 交通费覆盖两位技师", "线上最早可预约 3 小时后；更急请 WhatsApp"],
+    features: ["固定 120 分钟，RM798", "可备注偏好的精油、推拿、泰式或足疗组合", "可咨询全天时段，请提前联系确认", "需要更长时间请直接 WhatsApp"],
   },
 ];
 const homeFlow = [
@@ -281,40 +262,16 @@ const homeFlow = [
   ["4 · 技师到达", "技师按约定时间到达，在你的床上铺好一次性床单后开始。"],
 ];
 const homeFaqs = [
-  ["价格怎么算？", "经典 RM699 + 8% SST；随时 RM798 + 8% SST；四手 RM1,699 + 8% SST。RM100 交通费另计。"],
+  ["价格怎么算？", "经典 RM699 + 8% SST；随时 RM798 + 8% SST。RM100 交通费另计。"],
   ["地址怎么处理？", "团队会跟进服务地址与到达时间，并查看是否在 30km 范围。"],
-  ["服务范围到哪里？", "距离门店 30km 内，以下单后的实际地址确认。"],
+  ["服务范围到哪里？", "距离门店 30km 内，请把实际地址发给客服确认。"],
   ["我需要准备什么？", "不用搬家具，只要有一个能平躺、不被打扰的位置。技师会带精油、一次性床单和毛巾。"],
-  ["最快多久能到？", "线上最早可选下单后 3 小时。更急的话，把地址和时间 WhatsApp 给我们。"],
-  ["半夜可以预约吗？", "随时服务可全天预约，包括凌晨 3 点。经典和四手开始时间为每日 9am-10pm。"],
+  ["最快多久能到？", "请至少提前 3 小时联系确认。更急的话，把地址和时间发给客服。"],
+  ["半夜可以预约吗？", "随时服务可全天预约，包括凌晨 3 点。经典服务开始时间为每日 9am-10pm。"],
   ["怎么联系？", "通过 WhatsApp、Telegram 或 WeChat 找客服即可。"],
 ];
 
-const beautyChips = ["普通价目咨询", "男女都可预约", "一对一专员服务", "WhatsApp 提前预约"];
-const lightTreatments = [
-  ["光子嫩肤", "beauty-photon.jpg?osw=0.9.23", "温和光电面部护理，针对暗沉、粗糙与肤色不均，让肌肤看起来更干净透亮。"],
-  ["淡斑护理", "beauty-spot.jpg?osw=0.9.23", "针对面部色素沉着的局部亮肤护理；现场皮肤评估后确认方案与价格。"],
-  ["冰点脱毛", "beauty-hair.jpg?osw=0.9.23", "810nm 冰点技术，低温感更温和；按部位报价，也可组合多部位。"],
-];
-const signature = [
-  ["项目内容", "先泡汤汗蒸，再到美容部完成身体植物焕亮护理；身体膜等待时同步完成水光面部护理与手部护理。"],
-  ["适合人群", "肤色暗沉、肤色不均、干燥缺水、手部粗糙，或重要场合前想让状态更亮的人。"],
-  ["须知", "敏感肌、近期暴晒或怀孕请先告知专员；护理后 48 小时注意防晒与保湿。"],
-];
-const facial = [
-  ["项目内容", "深层清洁、黑头清理、铲皮、精华导入、面部刮痧、冰锤舒缓与修复面膜。"],
-  ["适合人群", "毛孔堵塞、黑头明显、妆容不服帖，或皮肤很久没做深层清洁。"],
-  ["须知", "有开放伤口或严重爆痘请先告知专员；护理后少化厚妆并注意防晒。"],
-];
-const beautyFaqs = [
-  ["美容包含温泉门票吗？", "美容护理不自动包含温泉门票；如需入场，请另外向客服确认。"],
-  ["男生可以预约吗？", "可以。主推护理男女都适合，光电项目会先做皮肤评估。"],
-  ["需要提前预约吗？", "需要，每个 session 都是一对一。请 WhatsApp 锁定时段。"],
-  ["为什么光电项目没有标价？", "光子、淡斑和脱毛会按皮肤状态与部位定制，咨询后确认完整报价。"],
-  ["怎么联系？", "可以通过 WhatsApp、Telegram 或 WeChat 咨询。"],
-];
-
-const tcmChips = ["免费中医把脉", "驻店中医师", "一对一专员服务", "WhatsApp 提前预约"];
+const tcmChips = ["驻店中医师", "一对一专员服务", "WhatsApp 提前预约"];
 const tcmTreatments = [
   ["全身经络药拓调理", "tcm-meridian.jpg?osw=0.9.23", "72 种中草药药包配合专业技法沿经络推行，做完温暖、松开、轻盈。", "RM699"],
   ["艾灸", "tcm-moxa.jpg?osw=0.9.23", "温热艾灸一层层渗入，适合手脚冰冷和身体寒凉感。", "RM199"],
@@ -376,9 +333,9 @@ const faqRows: [string, string][] = [
   ["真的可以待 12 小时？", "可以。从进场那一刻开始算满 12 小时，这段时间店里的设施都能随便用。"],
   ["星期日算平日还是周末？", "在我们这里算平日。星期日到星期四同属低价档，星期五、星期六和公共假期是另一档。"],
   ["公共假期怎么算钱？", "按周末那一档。不用自己算，日历上选好日期就会显示当天价格。"],
-  ["普通成人入场怎么选？", "选择 12 小时普通入场即可。按摩、搓背、美容与中医项目另行加购。"],
+  ["普通成人入场怎么选？", "选择 12 小时普通入场即可。按摩、搓背与中医项目另行加购。"],
   ["多人怎么买？", "每位大人各买一张12 小时单人入场，选择同一天同一时间即可。"],
-  ["普通入场包含按摩吗？", "不包含。普通入场包含 12 小时停留与设施使用；按摩、搓背、美容与中医项目都是另外加购。"],
+  ["普通入场包含按摩吗？", "不包含。普通入场包含 12 小时停留与设施使用；按摩、搓背与中医项目都是另外加购。"],
   ["价格怎么结算？", "页面列出普通价目，实际以现场公示为准。"],
   ["小孩可以来吗？", "可以。12 岁及以下买儿童票，并要有大人陪同；2 岁及以下在前台登记就好，不收费。"],
   ["情侣可以一起泡吗？", "除了浴区都可以。浴区是男女分开的，店里没有混浴。"],
@@ -400,7 +357,6 @@ function Money({ was, price, per }: { was?: string; price: string; per?: string 
       <span className="rm">
         <span className="cur">RM</span>
         {price}
-        <sup className="osw-pp">++</sup>
         {per ? <span className="per">{per}</span> : null}
       </span>
     </span>
@@ -472,7 +428,7 @@ export function PackagesPageCn() {
           <div className="container">
             <div className="t"><span className="dia" />可通过 WhatsApp、Telegram 或 WeChat 联系客服</div>
             <div className="t"><span className="dia" />从 check-in 起 12 小时，泡池、汗蒸、休息区与餐饮都包含</div>
-            <div className="t"><span className="dia" />按摩、搓背、美容与中医项目为另外加购</div>
+            <div className="t"><span className="dia" />按摩、搓背与中医项目为另外加购</div>
           </div>
         </section>
 
@@ -503,18 +459,11 @@ export function PackagesPageCn() {
                         </div>
                       ))}
                     </div>
-                    <p className="taxnote">++ = 10% 服务费 + 8% SST；选完日期后显示到手价</p>
+                    <p className="taxnote">最终金额请向客服确认</p>
                     <ul className="feat">{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
                     {item.notes.map((note) => <div className="note soft" key={note}>{note}</div>)}
                     <div className="grow" />
-                    <button
-                      className="btn wide"
-                      type="button"
-                      data-book={item.id.replace("pk-", "")}
-                      data-book-locale="cn"
-                    >
-                      {item.button}
-                    </button>
+                    <ContactButtons locale="cn" className="package-contact-pair" whatsappLabel="WhatsApp 预约" telegramLabel="Telegram 预约" wechatLabel="WeChat 预约" />
                   </div>
                 </article>
               ))}
@@ -541,7 +490,7 @@ export function PackagesPageCn() {
                 </div>
               </div>
             ))}
-            <p className="legend">++ = 10% 服务费 + 8% SST；最终金额由客服或前台确认。</p>
+            <p className="legend">最终金额由客服或前台确认。</p>
           </div>
         </section>
 
@@ -602,7 +551,7 @@ export function PackagesPageCn() {
               <div className="know">
                 <div className="t"><span className="dia" />普通入场为 12 小时使用，时间从 check-in 开始计算。</div>
                 <div className="t"><span className="dia" />价格未含 10% 服务费与 8% SST，实际以现场公示为准。</div>
-                <div className="t"><span className="dia" />按摩、搓背、美容与中医项目为另外加购，可先向客服咨询。</div>
+                <div className="t"><span className="dia" />按摩、搓背与中医项目为另外加购，可先向客服咨询。</div>
                 <div className="t"><span className="dia" />私人房、酒水桶与加项内容以现场供应和门店安排为准。</div>
               </div>
               <div className="policylinks">
@@ -680,8 +629,7 @@ export function HomeMassagePageCn() {
                       <ul className="feat">{plan.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
                     </div>
                     <div className="btnrow outcall-actions">
-                      <button className="btn" type="button" data-book={plan.code} data-book-locale="cn">查询空档 · {plan.price}</button>
-                      <ContactButtons locale="cn" className="outcall-contact-pair" whatsappLabel="WhatsApp 咨询" telegramLabel="Telegram 咨询" />
+                      <ContactButtons locale="cn" className="outcall-contact-pair" whatsappLabel="WhatsApp 预约" telegramLabel="Telegram 预约" wechatLabel="WeChat 预约" />
                     </div>
                   </div>
                 </article>
@@ -710,52 +658,20 @@ export function HomeMassagePageCn() {
   );
 }
 
-export function BeautyPageCn() {
-  return (
-    <>
-      <Header active="Beauty" locale="cn" />
-      <main id="main-content" lang="zh-Hans">
-        <Hero eyebrow="吉隆坡会所 · 美容部 · 吉隆坡" title={<>美容护理，现在也在 吉隆坡会所</>} copy="美容项目按普通价目咨询确认。另外还有光子嫩肤、淡斑护理与冰点脱毛，都要先预约。" image="beauty-hero.jpg?osw=0.9.23" />
-        <Chips items={beautyChips} />
-        <section id="beauty-signature">
-          <SectionHead eyebrow="美容价目" title="身体焕亮水光护理" sub="身体焕亮、水光面部与手部护理，请先咨询确认价格与时段。" />
-          <div className="container"><MiniGrid items={signature} /><div className="deal">价格与时段请 WhatsApp 或 Telegram 咨询</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="WhatsApp 预约" telegramLabel="Telegram 预约" /></div></div>
-        </section>
-        <section id="beauty-light">
-          <SectionHead eyebrow="光电项目" title="三项护理，咨询后定制" sub="每项都会按皮肤与部位定制，现场咨询后确认价格，无隐藏收费。" />
-          <div className="container"><div className="fac-grid">{lightTreatments.map(([title, image, desc]) => <article className="fac" key={title}><div className="ph"><img src={experienceImage(image)} alt={title} loading="lazy" decoding="async" /></div><div className="fb"><h3>{title}</h3><p>{desc}</p></div></article>)}</div></div>
-        </section>
-        <section id="beauty-facial">
-          <SectionHead eyebrow="深层护理" title="完整面部管理" sub="从深层清洁到最后修复面膜，一次完整重置面部状态。" />
-          <div className="container"><MiniGrid items={facial} /><div className="deal">价格与时段请 WhatsApp 或 Telegram 咨询</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="WhatsApp 咨询" telegramLabel="Telegram 咨询" /></div></div>
-        </section>
-        <section id="beauty-team"><SectionHead eyebrow="你的专员" title="一对一美容专员" /><div className="container"><div className="deal text-left">每项护理都由驻店美容专员一对一完成，光电项目前会先做皮肤评估。</div></div></section>
-        <section id="beauty-faq">
-          <SectionHead eyebrow="预约前" title="美容部 FAQ" />
-          <div className="container"><div className="faqwrap"><div className="faq">{beautyFaqs.map(([question, answer]) => <details key={question}><summary>{question}<span className="plus" /></summary><div className="a">{answer}</div></details>)}</div><div className="center-cta faq-cta"><p className="fine">还有其他问题？</p><ContactButtons locale="cn" whatsappLabel="WhatsApp 咨询" telegramLabel="Telegram 咨询" /></div></div></div>
-        </section>
-      </main>
-      <Footer locale="cn" />
-      <FloatingWhatsApp locale="cn" />
-    </>
-  );
-}
-
 export function TcmPageCn() {
   return (
     <>
       <Header active="TCM" locale="cn" />
       <main id="main-content" lang="zh-Hans">
-        <Hero eyebrow="吉隆坡会所 · 中医部 · 吉隆坡" title={<>中医养生，现在也在 吉隆坡会所</>} copy="驻店中医师先免费把脉，再谈要不要做。针灸、艾灸、草本泥灸与正骨调理都有，价格公开，WhatsApp 就能约。" image="tcm-hero.jpg?osw=0.9.23" />
+        <Hero eyebrow="吉隆坡会所 · 中医部 · 吉隆坡" title={<>中医养生，现在也在 吉隆坡会所</>} copy="驻店中医师先进行一对一评估，再安排适合的调理项目。针灸、艾灸、草本泥灸与正骨调理都有，价格公开，WhatsApp 就能约。" image="tcm-hero.jpg?osw=0.9.23" />
         <Chips items={tcmChips} />
-        <section id="tcm-pulse"><SectionHead eyebrow="免费体验" title="免费中医把脉" sub="一对一看你的体质和眼下的状态，评估完才谈该怎么调。" /><div className="container"><div className="deal"><b>全身药拓 · 肩颈脊柱调理 · 睡眠压力调理 · 药膳茶饮搭配</b></div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="预约免费把脉" telegramLabel="Telegram 预约" /></div></div></section>
         <section id="tcm-services"><SectionHead eyebrow="养生项目" title="五项传统护理，先约先得" sub="每个 session 都是一对一；列出的价格为普通价目，可先向客服咨询。" /><div className="container"><div className="fac-grid">{tcmTreatments.map(([title, image, desc, price]) => <article className="fac" key={title}><div className="ph"><img src={experienceImage(image)} alt={title} loading="lazy" decoding="async" /></div><div className="fb"><h3>{title}</h3><p>{desc}</p>{price ? <p><b>{price}</b></p> : null}</div></article>)}</div></div></section>
         <section id="targeted-care"><SectionHead eyebrow="中医调理 · CHINESE MEDICINE CARE" title="Traditional Chinese Medicine Specialties" sub="由中医师评估后安排的一对一传统调理" /><div className="container"><MiniGrid items={specialties} /><div className="deal">具体项目、时长及适用情况，以中医师现场评估为准</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="WhatsApp 预约" telegramLabel="Telegram 预约" /></div></div></section>
-        <section id="physician"><SectionHead eyebrow="医师项目" title="中医师操作项目" sub="针灸、小针刀与刺络均由中医师亲自操作，必须先把脉评估。" /><div className="container"><MiniGrid items={physician} /><div className="deal">列出的价格为普通价目，先免费把脉，适合才继续。</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="预约医师项目" telegramLabel="Telegram 预约" /></div></div></section>
+        <section id="physician"><SectionHead eyebrow="医师项目" title="中医师操作项目" sub="针灸、小针刀与刺络均由中医师亲自操作，必须先进行评估。" /><div className="container"><MiniGrid items={physician} /><div className="deal">列出的价格为普通价目，评估适合后才继续。</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="预约医师项目" telegramLabel="Telegram 预约" /></div></div></section>
         <section id="meridian"><SectionHead eyebrow="招牌项目" title="全身经络药拓调理" sub="以十二经络为引导的全身温热调理，从紧到松，从冷到暖。" /><div className="container"><MiniGrid items={tcmInfo.meridian} /><div className="deal"><b>RM699</b> · 普通价目；请 WhatsApp 或 Telegram 咨询</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="WhatsApp 预约" telegramLabel="Telegram 预约" /></div></div></section>
         <section id="intimate"><SectionHead eyebrow="女士专属" title="女性私密养护" sub="干净、专业、完全私密的女性护理。" /><div className="container"><MiniGrid items={tcmInfo.intimate} /><div className="deal">价格与时段请 WhatsApp 或 Telegram 咨询</div><div className="center-cta"><ContactButtons locale="cn" whatsappLabel="WhatsApp 预约" telegramLabel="Telegram 预约" /></div></div></section>
         <section id="tea"><SectionHead eyebrow="药食同源" title="中医草本茶饮" sub="中医部新鲜煮制草本茶，泡汤间隙可到店点，不需要预约。" /><div className="container"><div className="deal">护肝茶 RM29 · 祛湿茶 RM29 · 补肾茶 RM39 · 清肺茶 RM28 · 暖宫茶 RM28</div></div></section>
-        <section id="tcm-team"><SectionHead eyebrow="你的调理师" title="中医师与康复调理师" /><div className="container"><div className="deal text-left">中医部由中医师与康复调理师驻店。医师项目会在把脉评估后由中医师亲自操作。</div></div></section>
+        <section id="tcm-team"><SectionHead eyebrow="你的调理师" title="中医师与康复调理师" /><div className="container"><div className="deal text-left">中医部由中医师与康复调理师驻店。医师项目会在评估后由中医师亲自操作。</div></div></section>
         <section id="tcm-faq"><SectionHead eyebrow="预约前" title="中医部 FAQ" /><div className="container"><div className="faqwrap"><div className="faq">{tcmFaqs.map(([question, answer]) => <details key={question}><summary>{question}<span className="plus" /></summary><div className="a">{answer}</div></details>)}</div><div className="center-cta faq-cta"><p className="fine">还有其他问题？</p><ContactButtons locale="cn" whatsappLabel="WhatsApp 咨询" telegramLabel="Telegram 咨询" /></div></div></div></section>
       </main>
       <Footer locale="cn" />
@@ -782,7 +698,7 @@ const visitNotesCn: [string, string][] = [
   ["停车", "直接停在 Viva Home Mall，再前往 LG Floor；Grab 或德士可在商场正门上下车。"],
   ["联系方法", "WhatsApp、Telegram 或 WeChat 找我们，说明人数、日期和大概到店时间即可。"],
   ["门票包含", "从进场算起 12 小时，汤池、汗蒸房、桑拿、休息大厅与餐饮区都包含，毛巾与基本浴衣有提供。"],
-  ["按摩与护理", "按摩、搓背、美容与中医项目为另外加购，页面列明的是普通价目。"],
+  ["按摩与护理", "按摩、搓背与中医项目为另外加购，页面列明的是普通价目。"],
 ];
 
 export function ContactPageCn() {

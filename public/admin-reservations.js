@@ -101,25 +101,26 @@
   }
 
   function emptyClickStats() {
-    return [
-      { site: "klhuisuo", source: "main", channel: "whatsapp", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "klhuisuo", source: "main", channel: "telegram", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "klhuisuo", source: "main", channel: "wechat", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "klhuisuo", source: "jishi_tiaoxuan", channel: "whatsapp", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "klhuisuo", source: "jishi_tiaoxuan", channel: "telegram", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "klhuisuo", source: "jishi_tiaoxuan", channel: "wechat", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "onespa", source: "baiqu", channel: "whatsapp", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "onespa", source: "baiqu", channel: "telegram", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "onespa", source: "baiqu", channel: "wechat", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "onespa", source: "jishi_tiaoxuan", channel: "whatsapp", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "onespa", source: "jishi_tiaoxuan", channel: "telegram", total: 0, today: 0, this_week: 0, this_month: 0 },
-      { site: "onespa", source: "jishi_tiaoxuan", channel: "wechat", total: 0, today: 0, this_week: 0, this_month: 0 }
+    var groups = [
+      { site: "jinyuehui", source: "main" },
+      { site: "jinyuehui", source: "jishi_tiaoxuan" },
+      { site: "onespa", source: "baiqu" },
+      { site: "onespa", source: "jishi_tiaoxuan" },
+      { site: "klhuisuo", source: "main" },
+      { site: "klhuisuo", source: "jishi_tiaoxuan" }
     ];
+    return groups.flatMap(function (group) {
+      var channels = group.source === "jishi_tiaoxuan" ? ["whatsapp", "telegram"] : ["whatsapp", "telegram", "wechat"];
+      return channels.map(function (channel) {
+        return { site: group.site, source: group.source, channel: channel, total: 0, today: 0, this_week: 0, this_month: 0 };
+      });
+    });
   }
 
   function siteLabel(site) {
+    if (site === "jinyuehui") return "金悦汇";
+    if (site === "onespa") return "Nanhai Onsen";
     if (site === "klhuisuo") return "吉隆坡会所";
-    if (site === "onespa") return "OneSpa";
     return "旧记录";
   }
 
@@ -160,7 +161,7 @@
       var source = row.source || "unknown";
       var channel = row.channel;
       if (
-        site === "unknown" &&
+        (source !== "jishi_tiaoxuan" || channel === "whatsapp" || channel === "telegram") &&
         !items.some(function (item) {
           return item.site === site && item.source === source && item.channel === channel;
         })
@@ -238,9 +239,8 @@
 
   function normalizeWhatsApp(value) {
     var digits = String(value || "").replace(/\D/g, "");
-    if (!digits) return "";
-    if (digits.charAt(0) === "0") return "6" + digits;
-    return digits;
+    if (digits.charAt(0) === "0") digits = "6" + digits;
+    return digits.length >= 8 && digits.length <= 15 ? digits : "";
   }
 
   function telegramHref(value) {
@@ -251,114 +251,67 @@
     return raw ? "https://t.me/" + encodeURIComponent(raw) : "";
   }
 
-  function contactActions(row) {
-    var actions = [];
-    var phoneDigits = normalizeWhatsApp(row.customer_phone);
+  function customerContact(row) {
+    var rawPhone = String(row.customer_phone || "").trim();
+    var phone = normalizeWhatsApp(rawPhone);
     var tg = telegramHref(row.customer_telegram);
-    if (phoneDigits) {
-      actions.push(
-        '<a class="admin-contact admin-wa" target="_blank" rel="noopener" href="https://wa.me/' +
-          phoneDigits +
-          '">WhatsApp</a>'
-      );
+    var html = '<section class="admin-customer-panel"><span class="admin-contact-label">顾客联络资料</span>';
+    if (phone) {
+      html += '<a class="admin-phone-value" href="https://wa.me/' + phone + '" target="_blank" rel="noopener">' + escapeHtml(rawPhone) + '</a>' +
+        '<div class="admin-phone-actions"><a class="admin-contact admin-wa" href="https://wa.me/' + phone + '" target="_blank" rel="noopener">WhatsApp 联系</a>' +
+        '<button class="admin-contact admin-copy-phone" type="button" data-copy-phone="' + escapeHtml(rawPhone) + '">复制号码</button></div>';
+    } else {
+      html += '<b class="admin-phone-value invalid">' + (rawPhone ? escapeHtml(rawPhone) : '未提供') + '</b>' +
+        '<p class="admin-contact-warning">号码资料不完整，无法联系顾客</p>';
     }
-    if (tg) {
-      actions.push(
-        '<a class="admin-contact admin-tg" target="_blank" rel="noopener" href="' +
-          escapeHtml(tg) +
-          '">Telegram</a>'
-      );
-    }
-    if (!actions.length) return '<span class="admin-no-contact">No chat contact</span>';
-    return actions.join("");
+    if (row.customer_email) html += '<p class="admin-secondary-contact">电子邮箱：' + escapeHtml(row.customer_email) + '</p>';
+    if (tg) html += '<p class="admin-secondary-contact">旧资料 Telegram：<a href="' + escapeHtml(tg) + '" target="_blank" rel="noopener">' + escapeHtml(row.customer_telegram) + '</a></p>';
+    return html + '</section>';
   }
 
   function statusOptions(value) {
-    return ["pending", "confirmed", "completed", "cancelled", "no_show"]
-      .map(function (status) {
-        return '<option value="' + status + '"' + (status === value ? " selected" : "") + ">" + status.replace("_", " ") + "</option>";
-      })
-      .join("");
+    var labels = { pending: "待确认", confirmed: "已确认", completed: "已完成", cancelled: "已取消", no_show: "未到店" };
+    return Object.keys(labels).map(function (status) {
+      return '<option value="' + status + '"' + (status === value ? " selected" : "") + '>' + labels[status] + '</option>';
+    }).join("");
   }
 
   function itemRows(row) {
     var items = Array.isArray(row.items) ? row.items : [];
-    if (!items.length) return '<div class="admin-item muted">No item details saved.</div>';
-    return items
-      .map(function (item) {
-        return (
-          '<div class="admin-item"><div><b>' +
-          escapeHtml(item.nameEn || item.name || item.code || "Package") +
-          "</b><span>" +
-          escapeHtml(item.date || formatDate(row.visit_date)) +
-          " · " +
-          escapeHtml(item.time || "-") +
-          " · Qty " +
-          escapeHtml(item.qty || 1) +
-          (item.unit ? " · " + escapeHtml(item.unit) : "") +
-          '</span></div><strong>' +
-          lineMoney(item.total) +
-          "</strong></div>"
-        );
-      })
-      .join("");
+    if (!items.length) return '<div class="admin-item muted">没有保存项目资料。</div>';
+    return items.map(function (item) {
+      return '<div class="admin-item"><div><b>' +
+        escapeHtml(item.nameCn || item.name || item.nameEn || item.code || "预约项目") +
+        '</b><span>' + escapeHtml(item.date || formatDate(row.visit_date)) + ' · ' + escapeHtml(item.time || "-") +
+        ' · 数量 ' + escapeHtml(item.qty || 1) + (item.unit ? ' · ' + escapeHtml(item.unit) : '') +
+        '</span></div><strong>' + lineMoney(item.total) + '</strong></div>';
+    }).join("");
   }
 
   function render() {
     var root = $("[data-admin-list]");
     if (!root) return;
     var filter = currentFilter();
-    var visible = rows.filter(function (row) {
-      return filter === "all" || row.status === filter;
-    });
-
+    var visible = rows.filter(function (row) { return filter === "all" || row.status === filter; });
     if (!visible.length) {
-      root.innerHTML = '<div class="admin-empty">No reservations found.</div>';
+      root.innerHTML = '<div class="admin-empty">没有找到预约。</div>';
       return;
     }
-
-    root.innerHTML = visible
-      .map(function (row) {
-        return (
-          '<article class="admin-card" data-ref="' +
-          escapeHtml(row.reservation_ref) +
-          '"><div class="admin-card-head"><div><span class="admin-ref">' +
-          escapeHtml(row.reservation_ref) +
-          '</span><h2>' +
-          escapeHtml(row.customer_name) +
-          '</h2><div class="admin-contact-row">' +
-          contactActions(row) +
-          '</div></div><div class="admin-money">' +
-          money(row.total_cents) +
-          '</div></div><div class="admin-detail-grid"><div><span>Visit date</span><b>' +
-          escapeHtml(formatDate(row.visit_date)) +
-          '</b></div><div><span>Created</span><b>' +
-          escapeHtml(formatDateTime(row.created_at)) +
-          '</b></div></div><div class="admin-customer"><span>' +
-          (row.customer_phone ? "WhatsApp: " + escapeHtml(row.customer_phone) : "") +
-          (row.customer_phone && row.customer_telegram ? " · " : "") +
-          (row.customer_telegram ? "Telegram: " + escapeHtml(row.customer_telegram) : "") +
-          (row.customer_email ? " · Email: " + escapeHtml(row.customer_email) : "") +
-          '</span></div><div class="admin-items">' +
-          itemRows(row) +
-          '</div><div class="admin-breakdown"><div><span>Subtotal</span><b>' +
-          money(row.subtotal_cents) +
-          '</b></div><div><span>Service charge</span><b>' +
-          money(row.service_charge_cents) +
-          '</b></div><div><span>SST</span><b>' +
-          money(row.sst_cents) +
-          '</b></div><div class="grand"><span>Total</span><b>' +
-          money(row.total_cents) +
-          '</b></div></div><div class="admin-actions"><label><span>Status</span><select data-admin-update="' +
-          escapeHtml(row.reservation_ref) +
-          '">' +
-          statusOptions(row.status) +
-          "</select></label></div>" +
-          (row.customer_notes ? '<p class="admin-note">' + escapeHtml(row.customer_notes) + "</p>" : "") +
-          "</article>"
-        );
-      })
-      .join("");
+    root.innerHTML = visible.map(function (row) {
+      return '<article class="admin-card" data-ref="' + escapeHtml(row.reservation_ref) + '">' +
+        '<div class="admin-card-head"><div><span class="admin-ref">预约编号 ' + escapeHtml(row.reservation_ref) + '</span><h2>' + escapeHtml(row.customer_name) +
+        '</h2></div><div class="admin-money">' + money(row.total_cents) + '</div></div>' +
+        customerContact(row) +
+        '<div class="admin-detail-grid"><div><span>到店日期</span><b>' + escapeHtml(formatDate(row.visit_date)) +
+        '</b></div><div><span>提交时间</span><b>' + escapeHtml(formatDateTime(row.created_at)) + '</b></div></div>' +
+        '<div class="admin-items">' + itemRows(row) + '</div>' +
+        '<div class="admin-breakdown"><div><span>小计</span><b>' + money(row.subtotal_cents) +
+        '</b></div><div><span>服务费</span><b>' + money(row.service_charge_cents) +
+        '</b></div><div><span>SST 税</span><b>' + money(row.sst_cents) +
+        '</b></div><div class="grand"><span>总计</span><b>' + money(row.total_cents) + '</b></div></div>' +
+        '<div class="admin-actions"><label><span>预约状态</span><select data-admin-update="' + escapeHtml(row.reservation_ref) + '">' + statusOptions(row.status) + '</select></label></div>' +
+        (row.customer_notes ? '<p class="admin-note"><b>顾客备注：</b>' + escapeHtml(row.customer_notes) + '</p>' : '') + '</article>';
+    }).join("");
   }
 
   function saveToken() {
@@ -371,20 +324,20 @@
     var wasLoggedIn = isDashboardVisible();
     if (!token) {
       setLoggedIn(false);
-      setStatus("Enter your admin token to continue.", "bad", "[data-admin-login-status]");
+      setStatus("请输入管理员密钥。", "bad", "[data-admin-login-status]");
       return;
     }
 
-    setStatus("Loading reservations...", "");
+    setStatus("正在载入预约…", "");
     fetch(endpoint("/api/reservations?token=" + encodeURIComponent(token)))
       .then(function (res) {
-        return readJsonResponse(res, "Could not load reservations.");
+        return readJsonResponse(res, "无法载入预约。");
       })
       .then(function (body) {
         rows = body.reservations || [];
         setLoggedIn(true);
         render();
-        lastReservationStatus = "Loaded " + rows.length + " reservations.";
+        lastReservationStatus = "已载入 " + rows.length + " 笔预约。";
         setStatus(lastReservationStatus, "ok");
         setStatus("", "", "[data-admin-login-status]");
         refreshClickStats();
@@ -432,14 +385,14 @@
       body: JSON.stringify({ reservationRef: ref, status: status })
     })
       .then(function (res) {
-        return readJsonResponse(res, "Could not update reservation.");
+        return readJsonResponse(res, "无法更新预约状态。");
       })
       .then(function () {
         var row = rows.find(function (item) {
           return item.reservation_ref === ref;
         });
         if (row) row.status = status;
-        setStatus("Updated " + ref + ".", "ok");
+        setStatus("已更新预约 " + ref + "。", "ok");
       })
       .catch(function (error) {
         setStatus(error.message, "bad");
@@ -485,18 +438,18 @@
           transports: ["websocket", "polling"]
         });
         socket.on("connect", function () {
-          setStatus((lastReservationStatus || "Reservations loaded.") + " Realtime connected.", "ok");
+          setStatus((lastReservationStatus || "预约已载入。") + " 实时连接正常。", "ok");
         });
         socket.on("connect_error", function (error) {
-          setStatus((lastReservationStatus || "Reservations loaded.") + " Realtime offline: " + error.message, "bad");
+          setStatus((lastReservationStatus || "预约已载入。") + " 实时连接中断：" + error.message, "bad");
         });
         socket.on("reservation:created", function (row) {
           upsert(row);
-          setStatus("New reservation received: " + row.reservation_ref, "ok");
+          setStatus("收到新预约：" + row.reservation_ref, "ok");
         });
         socket.on("reservation:updated", function (row) {
           upsert(row);
-          setStatus("Reservation updated: " + row.reservation_ref, "ok");
+          setStatus("预约已更新：" + row.reservation_ref, "ok");
         });
       })
       .catch(function () {
@@ -521,11 +474,21 @@
       if (socket) socket.disconnect();
       tokenInput.value = "";
       setLoggedIn(false);
-      setStatus("Logged out.", "", "[data-admin-login-status]");
+      setStatus("已退出登录。", "", "[data-admin-login-status]");
     });
     $("[data-admin-filter]")?.addEventListener("change", render);
     tokenInput.addEventListener("keydown", function (event) {
       if (event.key === "Enter") refresh();
+    });
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-copy-phone]");
+      if (!button) return;
+      var value = button.getAttribute("data-copy-phone") || "";
+      navigator.clipboard.writeText(value).then(function () {
+        setStatus("已复制 WhatsApp 号码。", "ok");
+      }).catch(function () {
+        setStatus("无法自动复制，请手动选择号码。", "bad");
+      });
     });
     document.addEventListener("change", function (event) {
       if (!event.target || !event.target.closest) return;
@@ -537,7 +500,7 @@
     if (tokenInput.value) refresh();
     else {
       setLoggedIn(false);
-      setStatus("Enter your admin token to continue.", "", "[data-admin-login-status]");
+      setStatus("请输入管理员密钥。", "", "[data-admin-login-status]");
     }
   });
 })();

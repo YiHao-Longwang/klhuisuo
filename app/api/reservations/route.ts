@@ -121,16 +121,6 @@ const products = {
     leadHours: 3,
     fee: { sc: 0, sst: 0.08 },
   },
-  "outcall-fourhands": {
-    en: "Four-Hands Premium · 2h",
-    cn: "四手尊宠 · 2 小时",
-    unit: "/ 2-hour session",
-    single: 1699,
-    kind: "home",
-    leadHours: 3,
-    hours: [9, 22],
-    fee: { sc: 0, sst: 0.08 },
-  },
 } as const;
 
 async function runtimeEnv() {
@@ -274,6 +264,11 @@ async function ensureTable(sql: ReturnType<typeof neon>) {
   await sql`create index if not exists reservations_status_idx on reservations (status)`;
 }
 
+function validCustomerPhone(value: string) {
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 8 && digits.length <= 15;
+}
+
 function errorResponse(message: string, status = 400) {
   return Response.json({ error: message }, { status });
 }
@@ -303,73 +298,8 @@ export async function GET(request: Request) {
   return Response.json({ reservations: rows });
 }
 
-export async function POST(request: Request) {
-  const urlValue = await databaseUrl();
-  if (!urlValue) return errorResponse("DATABASE_URL is not configured.", 503);
-
-  let payload: {
-    locale?: "en" | "cn";
-    customer?: CustomerPayload;
-    items?: CartItem[];
-  };
-
-  try {
-    payload = (await request.json()) as typeof payload;
-  } catch {
-    return errorResponse("Invalid JSON body.");
-  }
-
-  const customer = payload.customer ?? {};
-  const name = customer.name?.trim() ?? "";
-  const phone = customer.phone?.trim() ?? "";
-  const telegram = customer.telegram?.trim() ?? "";
-  if (!name) return errorResponse("Customer name is required.");
-  if (!phone && !telegram) return errorResponse("Please provide WhatsApp phone or Telegram username.");
-  if (!payload.items?.length) return errorResponse("Cart is empty.");
-
-  let totals: ReturnType<typeof calculate>;
-  try {
-    totals = calculate(payload.items);
-  } catch (error) {
-    return errorResponse(error instanceof Error ? error.message : "Invalid reservation.");
-  }
-
-  const ref = makeRef();
-  const visitDate = totals.items[0].date;
-  const sql = neon(urlValue);
-
-  try {
-    await ensureTable(sql);
-    const [reservation] = await sql`
-      insert into reservations (
-        reservation_ref, locale, customer_name, customer_phone, customer_telegram, customer_email,
-        customer_notes, visit_date, items, subtotal_cents, service_charge_cents,
-        sst_cents, total_cents
-      )
-      values (
-        ${ref}, ${payload.locale ?? "en"}, ${name}, ${phone || null}, ${telegram || null}, ${customer.email?.trim() || null},
-        ${customer.notes?.trim() || null}, ${visitDate}, ${JSON.stringify(totals.items)}::jsonb,
-        ${cents(totals.subtotal)}, ${cents(totals.serviceCharge)}, ${cents(totals.sst)},
-        ${cents(totals.total)}
-      )
-      returning reservation_ref, status, total_cents, payment_status, created_at
-    `;
-
-    return Response.json(
-      {
-        reservation,
-        totals,
-        payment: "pay_after_treatment",
-        message:
-          payload.locale === "cn"
-            ? "预约已记录。客服会尽快跟进。"
-            : "Reservation recorded. Our team will follow up soon.",
-      },
-      { status: 201 },
-    );
-  } catch (error) {
-    return errorResponse(error instanceof Error ? error.message : "Could not save reservation.", 500);
-  }
+export async function POST() {
+  return errorResponse("线上预约已关闭，请通过 WhatsApp、WeChat 或 Telegram 联系客服。", 410);
 }
 
 export async function PATCH(request: Request) {
