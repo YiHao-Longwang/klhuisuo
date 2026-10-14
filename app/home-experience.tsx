@@ -57,7 +57,7 @@ export function HomeExperience({ locale, contact }: { locale: "en" | "cn"; conta
 
       <section className="care-directory container"><div><div className="journal-label">04 / {t("A LITTLE MORE CARE", "多一份照顾")}</div><h2>{t("Your own kind", "照顾自己，")}<br /><em>{t("of wellbeing.", "不止一种方式。")}</em></h2></div><div className="care-links">{[["packages/#treatments","Massage & body care","按摩与身体护理","Tui na, foot therapy and traditional body polish.","推拿、足疗与古法搓背。"],["tcm/","TCM wellness","中医调理","Start with a conversation and a pulse assessment.","从沟通与把脉开始，了解身体。"],["home-massage/","Care, brought to you","上门按摩","Massage at your home or hotel, within 30km.","30 公里范围内，送到住家或酒店的放松。"]].map(([href,en,zh,desc,zhDesc]) => <a href={`${base}/${href}`} key={href}><div><h3>{t(en,zh)}</h3><p>{t(desc,zhDesc)}</p></div><span aria-hidden="true">↗</span></a>)}</div></section>
 
-      <section className="smoke-section">
+      <section id="smoke" className="smoke-section">
         <div className="container smoke-grid">
           <div className="smoke-copy">
             <div className="journal-label">05 / {t("CHINESE SMOKE", "中国烟草")}</div>
