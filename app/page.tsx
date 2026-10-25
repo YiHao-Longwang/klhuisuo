@@ -5,7 +5,7 @@ import { pageMetadata } from "./seo";
 export const metadata = pageMetadata({
   title: "吉隆坡会所 | 吉隆坡下水 · 吉隆坡水汇 · 按摩娱乐会所",
   description:
-    "吉隆坡会所是吉隆坡 24 小时SPA、桑拿、按摩与休闲娱乐会所，位于 Viva Home Mall。搜索吉隆坡会所、吉隆坡下水、吉隆坡水汇、下水、水汇、吉隆坡按摩、吉隆坡上门与吉隆坡娱乐可预约。",
+    "吉隆坡会所是吉隆坡 24 小时SPA、桑拿、按摩与休闲娱乐会所，位于 Vivahome Shopping Mall。搜索吉隆坡会所、吉隆坡下水、吉隆坡水汇、下水、水汇、吉隆坡按摩、吉隆坡上门与吉隆坡娱乐可预约。",
   path: "/",
   keywords: [
     "吉隆坡会所 吉隆坡下水",

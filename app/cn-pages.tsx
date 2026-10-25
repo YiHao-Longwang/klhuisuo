@@ -33,7 +33,7 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
   facilities: {
     title: "吉隆坡水汇设施 | 汤泉汗蒸桑拿包厢 · 吉隆坡会所",
     description:
-      "吉隆坡会所位于吉隆坡 Viva Home Mall：冷热汤池、岩盐蒸房房、桑拿、按摩包厢、搓背房、休息大厅与餐饮区，24 小时开放，适合吉隆坡下水与吉隆坡水汇搜索。",
+      "吉隆坡会所位于吉隆坡 Vivahome Shopping Mall：冷热汤池、岩盐蒸房房、桑拿、按摩包厢、搓背房、休息大厅与餐饮区，24 小时开放，适合吉隆坡下水与吉隆坡水汇搜索。",
     path: "/facilities/",
     keywords: ["吉隆坡SPA设施", "吉隆坡汗蒸", "吉隆坡桑拿", "吉隆坡娱乐", "吉隆坡会所设施", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
     image: "/assets/fac-hero-immersive.jpg",
@@ -64,14 +64,14 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
   contact: {
     title: "联系我们 | 吉隆坡SPA地址电话 · 吉隆坡会所",
     description:
-      "吉隆坡会所地址：吉隆坡 Viva Home Mall LG Floor，24 小时营业，WhatsApp +60 14-315 5632 预约吉隆坡SPA与按摩。",
+      "吉隆坡会所地址：吉隆坡 Vivahome Shopping Mall，24 小时营业，WhatsApp +60 14-315 5632 预约吉隆坡SPA与按摩。",
     path: "/contact/",
-    keywords: ["吉隆坡会所地址", "吉隆坡SPA地址", "吉隆坡按摩电话", "Viva Home Mall spa"],
+    keywords: ["吉隆坡会所地址", "吉隆坡SPA地址", "吉隆坡按摩电话", "Vivahome Shopping Mall spa"],
   },
   wenquan: {
     title: "吉隆坡水汇汤泉 | 24小时中式泡汤 · 吉隆坡会所",
     description:
-      "吉隆坡会所 24 小时温泉汤泉：热汤池、汗蒸、桑拿与冰池交替，12 小时任泡任休息，位于 Viva Home Mall，也覆盖吉隆坡下水、吉隆坡水汇、下水、水汇搜索。",
+      "吉隆坡会所 24 小时温泉汤泉：热汤池、汗蒸、桑拿与冰池交替，12 小时任泡任休息，位于 Vivahome Shopping Mall，也覆盖吉隆坡下水、吉隆坡水汇、下水、水汇搜索。",
     path: "/wenquan/",
     keywords: ["吉隆坡温泉", "吉隆坡汤泉", "吉隆坡泡汤", "KL onsen spa", "24小时汤泉", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
   },
@@ -318,10 +318,10 @@ const tcmFaqs = [
 const faqRows: [string, string][] = [
   [
     "吉隆坡会所 在吉隆坡哪里？",
-    "地址是 LG Floor, Viva Home Mall, 85 Jalan Loke Yew, Taman Miharja, 52200 Kuala Lumpur，靠近 Cheras 一带。",
+    "地址是 Vivahome Shopping Mall。",
   ],
   ["营业时间是几点？", "吉隆坡会所 是吉隆坡 24 小时SPA会所，全年无休，周末与公共假期照常营业。"],
-  ["Viva Home Mall 有停车位吗？", "有，直接停在 Viva Home Mall，然后前往 LG Floor；Grab 或德士可在商场正门上下车。"],
+  ["Vivahome Shopping Mall 有停车位吗？", "有，直接停在 Vivahome Shopping Mall；Grab 或德士可在商场正门上下车。"],
   [
     "12 小时门票包含什么？",
     "从进场算起 12 小时，汤池、汗蒸房、桑拿、休息大厅与餐饮区都包含，毛巾与基本浴衣也有提供。",
@@ -693,9 +693,9 @@ export function FaqPageCn() {
 }
 
 const visitNotesCn: [string, string][] = [
-  ["地址", "吉隆坡 Viva Home Mall LG Floor，85 Jalan Loke Yew, Taman Miharja, 52200 Kuala Lumpur，位于 Cheras 一带，从武吉免登与 KLCC 开车很快到。"],
+  ["地址", "Vivahome Shopping Mall"],
   ["营业时间", "全年无休，每天 24 小时营业，周末与公共假期照常。"],
-  ["停车", "直接停在 Viva Home Mall，再前往 LG Floor；Grab 或德士可在商场正门上下车。"],
+  ["停车", "直接停在 Vivahome Shopping Mall；Grab 或德士可在商场正门上下车。"],
   ["联系方法", "WhatsApp、Telegram 或 WeChat 找我们，说明人数、日期和大概到店时间即可。"],
   ["门票包含", "从进场算起 12 小时，汤池、汗蒸房、桑拿、休息大厅与餐饮区都包含，毛巾与基本浴衣有提供。"],
   ["按摩与护理", "按摩、搓背与中医项目为另外加购，页面列明的是普通价目。"],
@@ -710,7 +710,7 @@ export function ContactPageCn() {
           <SectionHead eyebrow="吉隆坡会所 · 联系我们" title="来找我们" />
           <div className="container">
             <div className="cinfo-wrap">
-              <div className="cinfo"><span className="ck">地址</span><span className="cv">LG Floor, Viva Home Mall, 85 Jalan Loke Yew, Taman Miharja, 52200 Kuala Lumpur</span></div>
+              <div className="cinfo"><span className="ck">地址</span><span className="cv">Vivahome Shopping Mall</span></div>
               <div className="cinfo"><span className="ck">营业时间</span><span className="cv">每天 24 小时营业</span></div>
               <div className="cinfo"><span className="ck">WhatsApp</span><span className="cv"><a href={whatsappHrefCn} target="_blank" rel="noopener">{whatsappNumberDisplay}（点击聊天）</a></span></div>
               <div className="cinfo"><span className="ck">Telegram</span><span className="cv"><a href={telegramHrefCn} target="_blank" rel="noopener">{telegramDisplay}（点击聊天）</a></span></div>
@@ -718,9 +718,9 @@ export function ContactPageCn() {
             </div>
             <div className="btnrow contact-actions">
               <a className="btn" href={googleBusinessProfileUrl} target="_blank" rel="noopener">打开 Google Maps</a>
-              <a className="btn line" href="https://waze.com/ul?q=Kuala Lumpur Club%20Viva%20Home%20Mall" target="_blank" rel="noopener">打开 Waze</a>
+              <a className="btn line" href="https://waze.com/ul?q=Vivahome%20Shopping%20Mall" target="_blank" rel="noopener">打开 Waze</a>
             </div>
-            <div className="deal contact-note"><b>唯一门店</b> - 吉隆坡会所 只有这一间门店，位于吉隆坡 Taman Miharja 的 Viva Home Mall LG Floor。我们没有分店，请导航到以上地址。</div>
+            <div className="deal contact-note"><b>唯一门店</b> - 吉隆坡会所 只有这一间门店，位于 Vivahome Shopping Mall。我们没有分店，请导航到以上地址。</div>
           </div>
         </section>
 

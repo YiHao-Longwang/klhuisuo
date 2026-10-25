@@ -77,8 +77,8 @@ const footerPoliciesCn = [
   ["隐私政策", "/privacy-policy/"],
 ];
 
-const footerHighlights = ["Open 24 Hours", "12-Hour Stay", "Viva Home Mall KL"];
-const footerHighlightsCn = ["24 小时营业", "12 小时任你待", "Viva Home Mall KL"];
+const footerHighlights = ["Open 24 Hours", "12-Hour Stay", "Vivahome Shopping Mall"];
+const footerHighlightsCn = ["24 小时营业", "12 小时任你待", "Vivahome Shopping Mall"];
 
 const footerExperienceLinks = [
   ["Prices", "/packages/"],
@@ -420,11 +420,7 @@ export function Footer({ locale = "cn" }: { locale?: Locale }) {
           </div>
           <div className="col footer-visit-col">
             <h6>{isCn ? "地址" : "Visit"}</h6>
-            <p>
-              LG Floor, Viva Home Mall,
-              <br />
-              85 Jalan Loke Yew, Taman Miharja, 52200 Kuala Lumpur
-            </p>
+            <p>Vivahome Shopping Mall</p>
             
             <div className="footer-social">
               <h6>{isCn ? "关注我们" : "Follow Us"}</h6>

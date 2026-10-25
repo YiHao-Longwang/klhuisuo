@@ -33,7 +33,7 @@ export const seoKeywords = [
   "24 hour spa KL",
   "onsen KL",
   "massage KL",
-  "Viva Home Mall spa",
+  "Vivahome Shopping Mall spa",
   "Kuala Lumpur spa",
   "KL onsen spa",
   "massage Kuala Lumpur",
@@ -132,12 +132,10 @@ export const localBusinessJsonLd = {
   paymentAccepted: ["Cash", "Credit Card", "Debit Card"],
   currenciesAccepted: "MYR",
   description:
-    "吉隆坡会所 is a 24-hour spa, massage, hot-spring and wellness destination in Kuala Lumpur at Viva Home Mall, relevant for 吉隆坡会所、吉隆坡下水、吉隆坡水汇、水汇、下水、吉隆坡按摩 and 吉隆坡娱乐 searches.",
+    "吉隆坡会所 is a 24-hour spa, massage, hot-spring and wellness destination in Kuala Lumpur at Vivahome Shopping Mall, relevant for 吉隆坡会所、吉隆坡下水、吉隆坡水汇、水汇、下水、吉隆坡按摩 and 吉隆坡娱乐 searches.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "LG Floor, Viva Home Mall, 85 Jalan Loke Yew, Taman Miharja",
-    addressLocality: "Kuala Lumpur",
-    postalCode: "52200",
+    streetAddress: "Vivahome Shopping Mall",
     addressCountry: "MY",
   },
   openingHoursSpecification: [
@@ -148,7 +146,7 @@ export const localBusinessJsonLd = {
       closes: "23:59",
     },
   ],
-  areaServed: ["Kuala Lumpur", "Cheras", "Taman Miharja", "Viva Home Mall"],
+  areaServed: ["Kuala Lumpur", "Cheras", "Taman Miharja", "Vivahome Shopping Mall"],
   contactPoint: [
     {
       "@type": "ContactPoint",
