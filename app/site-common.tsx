@@ -77,8 +77,8 @@ const footerPoliciesCn = [
   ["隐私政策", "/privacy-policy/"],
 ];
 
-const footerHighlights = ["Open 24 Hours", "12-Hour Stay", "Vivahome Shopping Mall"];
-const footerHighlightsCn = ["24 小时营业", "12 小时任你待", "Vivahome Shopping Mall"];
+const footerHighlights = ["Open 24 Hours", "12-Hour Stay", "Menara Pgrm"];
+const footerHighlightsCn = ["24 小时营业", "12 小时任你待", "Menara Pgrm"];
 
 const footerExperienceLinks = [
   ["Prices", "/packages/"],
@@ -420,7 +420,7 @@ export function Footer({ locale = "cn" }: { locale?: Locale }) {
           </div>
           <div className="col footer-visit-col">
             <h6>{isCn ? "地址" : "Visit"}</h6>
-            <p>Vivahome Shopping Mall</p>
+            <p>Level 22, Menara Pgrm, 8, Jalan Pudu Ulu, Taman Pertama, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</p>
             
             <div className="footer-social">
               <h6>{isCn ? "关注我们" : "Follow Us"}</h6>

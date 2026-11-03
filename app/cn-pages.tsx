@@ -14,7 +14,7 @@ import {
   whatsappHrefCn,
   whatsappNumberDisplay,
 } from "./site-common";
-import { faqJsonLd, googleBusinessProfileUrl, pageMetadata } from "./seo";
+import { faqJsonLd, googleBusinessProfileUrl, googleMapsDirectionsUrl, pageMetadata } from "./seo";
 
 /**
  * Every Chinese sub-page used to share one static metadata export pointing at
@@ -33,7 +33,7 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
   facilities: {
     title: "吉隆坡水汇设施 | 汤泉汗蒸桑拿包厢 · 吉隆坡会所",
     description:
-      "吉隆坡会所位于吉隆坡 Vivahome Shopping Mall：冷热汤池、岩盐蒸房房、桑拿、按摩包厢、搓背房、休息大厅与餐饮区，24 小时开放，适合吉隆坡下水与吉隆坡水汇搜索。",
+      "吉隆坡会所位于吉隆坡 Menara Pgrm：冷热汤池、岩盐蒸房房、桑拿、按摩包厢、搓背房、休息大厅与餐饮区，24 小时开放，适合吉隆坡下水与吉隆坡水汇搜索。",
     path: "/facilities/",
     keywords: ["吉隆坡SPA设施", "吉隆坡汗蒸", "吉隆坡桑拿", "吉隆坡娱乐", "吉隆坡会所设施", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
     image: "/assets/fac-hero-immersive.jpg",
@@ -64,14 +64,14 @@ export const cnPageSeo: Record<string, { title: string; description: string; pat
   contact: {
     title: "联系我们 | 吉隆坡SPA地址电话 · 吉隆坡会所",
     description:
-      "吉隆坡会所地址：吉隆坡 Vivahome Shopping Mall，24 小时营业，WhatsApp +60 14-315 5632 预约吉隆坡SPA与按摩。",
+      "吉隆坡会所地址：吉隆坡 Menara Pgrm，24 小时营业，WhatsApp +60 14-315 5632 预约吉隆坡SPA与按摩。",
     path: "/contact/",
-    keywords: ["吉隆坡会所地址", "吉隆坡SPA地址", "吉隆坡按摩电话", "Vivahome Shopping Mall spa"],
+    keywords: ["吉隆坡会所地址", "吉隆坡SPA地址", "吉隆坡按摩电话", "Menara Pgrm spa"],
   },
   wenquan: {
     title: "吉隆坡水汇汤泉 | 24小时中式泡汤 · 吉隆坡会所",
     description:
-      "吉隆坡会所 24 小时温泉汤泉：热汤池、汗蒸、桑拿与冰池交替，12 小时任泡任休息，位于 Vivahome Shopping Mall，也覆盖吉隆坡下水、吉隆坡水汇、下水、水汇搜索。",
+      "吉隆坡会所 24 小时温泉汤泉：热汤池、汗蒸、桑拿与冰池交替，12 小时任泡任休息，位于 Menara Pgrm，也覆盖吉隆坡下水、吉隆坡水汇、下水、水汇搜索。",
     path: "/wenquan/",
     keywords: ["吉隆坡温泉", "吉隆坡汤泉", "吉隆坡泡汤", "KL onsen spa", "24小时汤泉", "吉隆坡下水", "吉隆坡水汇", "下水", "水汇"],
   },
@@ -318,10 +318,10 @@ const tcmFaqs = [
 const faqRows: [string, string][] = [
   [
     "吉隆坡会所 在吉隆坡哪里？",
-    "地址是 Vivahome Shopping Mall。",
+    "地址是 Level 22, Menara Pgrm, 8, Jalan Pudu Ulu, Taman Pertama, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur。",
   ],
   ["营业时间是几点？", "吉隆坡会所 是吉隆坡 24 小时SPA会所，全年无休，周末与公共假期照常营业。"],
-  ["Vivahome Shopping Mall 有停车位吗？", "有，直接停在 Vivahome Shopping Mall；Grab 或德士可在商场正门上下车。"],
+  ["Menara Pgrm 怎么停车？", "请导航至 Menara Pgrm，停车与入口安排可先向客服确认；Grab 或德士可在大楼入口上下车。"],
   [
     "12 小时门票包含什么？",
     "从进场算起 12 小时，汤池、汗蒸房、桑拿、休息大厅与餐饮区都包含，毛巾与基本浴衣也有提供。",
@@ -693,9 +693,9 @@ export function FaqPageCn() {
 }
 
 const visitNotesCn: [string, string][] = [
-  ["地址", "Vivahome Shopping Mall"],
+  ["地址", "Level 22, Menara Pgrm, 8, Jalan Pudu Ulu, Taman Pertama, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur"],
   ["营业时间", "全年无休，每天 24 小时营业，周末与公共假期照常。"],
-  ["停车", "直接停在 Vivahome Shopping Mall；Grab 或德士可在商场正门上下车。"],
+  ["停车", "请导航至 Menara Pgrm，停车与入口安排可先向客服确认；Grab 或德士可在大楼入口上下车。"],
   ["联系方法", "WhatsApp、Telegram 或 WeChat 找我们，说明人数、日期和大概到店时间即可。"],
   ["门票包含", "从进场算起 12 小时，汤池、汗蒸房、桑拿、休息大厅与餐饮区都包含，毛巾与基本浴衣有提供。"],
   ["按摩与护理", "按摩、搓背与中医项目为另外加购，页面列明的是普通价目。"],
@@ -710,17 +710,17 @@ export function ContactPageCn() {
           <SectionHead eyebrow="吉隆坡会所 · 联系我们" title="来找我们" />
           <div className="container">
             <div className="cinfo-wrap">
-              <div className="cinfo"><span className="ck">地址</span><span className="cv">Vivahome Shopping Mall</span></div>
+              <div className="cinfo"><span className="ck">地址</span><span className="cv">Level 22, Menara Pgrm, 8, Jalan Pudu Ulu, Taman Pertama, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</span></div>
               <div className="cinfo"><span className="ck">营业时间</span><span className="cv">每天 24 小时营业</span></div>
               <div className="cinfo"><span className="ck">WhatsApp</span><span className="cv"><a href={whatsappHrefCn} target="_blank" rel="noopener">{whatsappNumberDisplay}（点击聊天）</a></span></div>
               <div className="cinfo"><span className="ck">Telegram</span><span className="cv"><a href={telegramHrefCn} target="_blank" rel="noopener">{telegramDisplay}（点击聊天）</a></span></div>
               <div className="cinfo"><span className="ck">WeChat</span><span className="cv"><button type="button" data-wechat-copy={wechatId} data-copy-label={`WeChat ID ${wechatId}`} data-copied-label="已复制 WeChat ID">WeChat ID {wechatId}（点击复制）</button></span></div>
             </div>
             <div className="btnrow contact-actions">
-              <a className="btn" href={googleBusinessProfileUrl} target="_blank" rel="noopener">打开 Google Maps</a>
-              <a className="btn line" href="https://waze.com/ul?q=Vivahome%20Shopping%20Mall" target="_blank" rel="noopener">打开 Waze</a>
+              <a className="btn" href={googleMapsDirectionsUrl} target="_blank" rel="noopener">打开 Google Maps</a>
+              <a className="btn line" href="https://waze.com/ul?q=Level%2022%2C%20Menara%20Pgrm%2C%208%2C%20Jalan%20Pudu%20Ulu%2C%20Taman%20Pertama%2C%2056100%20Kuala%20Lumpur%2C%20Wilayah%20Persekutuan%20Kuala%20Lumpur" target="_blank" rel="noopener">打开 Waze</a>
             </div>
-            <div className="deal contact-note"><b>唯一门店</b> - 吉隆坡会所 只有这一间门店，位于 Vivahome Shopping Mall。我们没有分店，请导航到以上地址。</div>
+            <div className="deal contact-note"><b>唯一门店</b> - 吉隆坡会所 只有这一间门店，位于 Menara Pgrm。我们没有分店，请导航到以上地址。</div>
           </div>
         </section>
 

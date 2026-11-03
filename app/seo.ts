@@ -33,7 +33,7 @@ export const seoKeywords = [
   "24 hour spa KL",
   "onsen KL",
   "massage KL",
-  "Vivahome Shopping Mall spa",
+  "Menara Pgrm spa",
   "Kuala Lumpur spa",
   "KL onsen spa",
   "massage Kuala Lumpur",
@@ -98,6 +98,7 @@ export function pageMetadata({
 
 /** Placeholder until this clone receives its own Google Business Profile. */
 export const googleBusinessProfileUrl = siteUrl;
+export const googleMapsDirectionsUrl = "https://www.google.com/maps/search/?api=1&query=Level%2022%2C%20Menara%20Pgrm%2C%208%2C%20Jalan%20Pudu%20Ulu%2C%20Taman%20Pertama%2C%2056100%20Kuala%20Lumpur%2C%20Wilayah%20Persekutuan%20Kuala%20Lumpur";
 
 /**
  * Profiles that represent this same business. `sameAs` is how Google ties the
@@ -132,10 +133,10 @@ export const localBusinessJsonLd = {
   paymentAccepted: ["Cash", "Credit Card", "Debit Card"],
   currenciesAccepted: "MYR",
   description:
-    "吉隆坡会所 is a 24-hour spa, massage, hot-spring and wellness destination in Kuala Lumpur at Vivahome Shopping Mall, relevant for 吉隆坡会所、吉隆坡下水、吉隆坡水汇、水汇、下水、吉隆坡按摩 and 吉隆坡娱乐 searches.",
+    "吉隆坡会所 is a 24-hour spa, massage, hot-spring and wellness destination in Kuala Lumpur at Menara Pgrm, relevant for 吉隆坡会所、吉隆坡下水、吉隆坡水汇、水汇、下水、吉隆坡按摩 and 吉隆坡娱乐 searches.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Vivahome Shopping Mall",
+    streetAddress: "Level 22, Menara Pgrm, 8, Jalan Pudu Ulu, Taman Pertama, 56100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur",
     addressCountry: "MY",
   },
   openingHoursSpecification: [
@@ -146,7 +147,7 @@ export const localBusinessJsonLd = {
       closes: "23:59",
     },
   ],
-  areaServed: ["Kuala Lumpur", "Cheras", "Taman Miharja", "Vivahome Shopping Mall"],
+  areaServed: ["Kuala Lumpur", "Taman Pertama", "Pudu Ulu", "Menara Pgrm"],
   contactPoint: [
     {
       "@type": "ContactPoint",
