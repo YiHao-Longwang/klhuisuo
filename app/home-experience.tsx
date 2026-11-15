@@ -57,35 +57,7 @@ export function HomeExperience({ locale, contact }: { locale: "en" | "cn"; conta
 
       <section className="care-directory container"><div><div className="journal-label">04 / {t("A LITTLE MORE CARE", "多一份照顾")}</div><h2>{t("Your own kind", "照顾自己，")}<br /><em>{t("of wellbeing.", "不止一种方式。")}</em></h2></div><div className="care-links">{[["packages/#treatments","Massage & body care","按摩与身体护理","Tui na, foot therapy and traditional body polish.","推拿、足疗与古法搓背。"],["tcm/","TCM wellness","中医调理","Start with a conversation and a pulse assessment.","从沟通与把脉开始，了解身体。"],["home-massage/","Care, brought to you","上门按摩","Massage at your home or hotel, within 30km.","30 公里范围内，送到住家或酒店的放松。"]].map(([href,en,zh,desc,zhDesc]) => <a href={`${base}/${href}`} key={href}><div><h3>{t(en,zh)}</h3><p>{t(desc,zhDesc)}</p></div><span aria-hidden="true">↗</span></a>)}</div></section>
 
-      <section id="smoke" className="smoke-section">
-        <div className="container smoke-grid">
-          <div className="smoke-copy">
-            <div className="journal-label">05 / {t("CHINESE SMOKE", "中国烟草")}</div>
-            <h2>
-              {t("Smoke finds", "来自中国，")}
-              <br />
-              <em>{t("from China.", "烟草精选。")}</em>
-            </h2>
-            {contact}
-          </div>
-
-          <figure className="smoke-figure">
-            <img
-              src="/assets/china-smoke-catalog.jpeg"
-              alt={t("Chinese smoke catalogue", "中国烟草商品价目表")}
-              width="1024"
-              height="1536"
-              loading="lazy"
-            />
-            <figcaption>
-              <span>{t("CHINESE SMOKE", "中国烟草")}</span>
-              <span>{t("PRODUCT CATALOGUE", "商品价目表")}</span>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section id="faq" className="visit-section"><div className="container visit-grid"><div><div className="journal-label">06 / {t("WHEN YOU’RE READY", "准备好，就来吧")}</div><h2>{t("A message away.", "发个消息，问一下。")}</h2><p>{t("Tell us your guest count and arrival time. Our team can help with current availability and service details.", "把人数和大概到店时间告诉我们。客服可以协助你了解当天安排与项目细节。")}</p>{contact}<a className="journal-link" href={`${base}/contact/`}>{t("Find us at Menara Pgrm", "Menara Pgrm · 到店指引")}<span aria-hidden="true">↗</span></a></div><div className="visit-notes"><div><span>01</span><h3>{t("Come at any hour", "随时都欢迎")}</h3><p>{t("Open 24 hours. A 12-hour entry starts when you check in.", "全天 24 小时营业。12 小时门票从入场计时。")}</p></div><div><span>02</span><h3>{t("Ask before coming", "来之前先问问")}</h3><p>{t("Message us for current service availability and room details.", "可以先联系客服了解当天项目与房型情况。")}</p></div><a className="journal-link" href={`${base}/faq/`}>{t("More before-you-come questions", "第一次来，想多了解一点")}<span aria-hidden="true">↗</span></a></div></div></section>
+      <section id="faq" className="visit-section"><div className="container visit-grid"><div><div className="journal-label">05 / {t("WHEN YOU’RE READY", "准备好，就来吧")}</div><h2>{t("A message away.", "发个消息，问一下。")}</h2><p>{t("Tell us your guest count and arrival time. Our team can help with current availability and service details.", "把人数和大概到店时间告诉我们。客服可以协助你了解当天安排与项目细节。")}</p>{contact}<a className="journal-link" href={`${base}/contact/`}>{t("Find us at Menara Pgrm", "Menara Pgrm · 到店指引")}<span aria-hidden="true">↗</span></a></div><div className="visit-notes"><div><span>01</span><h3>{t("Come at any hour", "随时都欢迎")}</h3><p>{t("Open 24 hours. A 12-hour entry starts when you check in.", "全天 24 小时营业。12 小时门票从入场计时。")}</p></div><div><span>02</span><h3>{t("Ask before coming", "来之前先问问")}</h3><p>{t("Message us for current service availability and room details.", "可以先联系客服了解当天项目与房型情况。")}</p></div><a className="journal-link" href={`${base}/faq/`}>{t("More before-you-come questions", "第一次来，想多了解一点")}<span aria-hidden="true">↗</span></a></div></div></section>
     </main>
     <Footer locale={locale} /><FloatingWhatsApp locale={locale} />
   </>;
